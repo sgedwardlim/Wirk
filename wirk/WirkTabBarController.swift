@@ -13,12 +13,30 @@ class WirkTabBarController: UITabBarController {
     override func viewDidLoad() {
         
         // Create the Views that we want in our TabBar
+        let customersView = UIViewController()
+        let customersNav = UINavigationController(rootViewController: customersView)
+        customersNav.tabBarItem.title = "Customers"
+        customersNav.tabBarItem.image = UIImage(named: "customer")
+        
+        let jobView = UIViewController()
+        let jobNav = UINavigationController(rootViewController: jobView)
+        jobNav.tabBarItem.title = "Jobs"
+        jobNav.tabBarItem.image = UIImage(named: "job")
+        
+        let emailView = UIViewController()
+        let emailNav = UINavigationController(rootViewController: emailView)
+        emailNav.tabBarItem.title = "Email"
+        emailNav.tabBarItem.image = UIImage(named: "email")
+        
         let settingsView = SettingsController()
         let settingsNav = UINavigationController(rootViewController: settingsView)
         settingsNav.tabBarItem.title = "Settings"
-        tabBar.barTintColor = UIColor(colorType: .navbar)
+        settingsNav.tabBarItem.image = UIImage(named: "settings")
         
-        viewControllers = [settingsNav]
+        tabBar.barTintColor = UIColor(colorType: .navbar)
+        tabBar.unselectedItemTintColor = UIColor(colorType: .background)
+        tabBar.tintColor = UIColor(colorType: .button)
+        viewControllers = [customersNav, jobNav, emailNav, settingsNav]
     }
     
 }

@@ -29,6 +29,11 @@ class SettingsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Settings"
+        navigationController?.navigationBar.tintColor = .black
+        
+        
         view.backgroundColor = .white
         
         view.addSubview(logoutButton)

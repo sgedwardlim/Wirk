@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = UINavigationController(rootViewController: WirkTabBarController())
+        window?.rootViewController = WirkTabBarController()
         
         return true
     }
@@ -33,8 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Change the colors of the navigation bars (Top Bars)
         let navigationBarAppearace = UINavigationBar.appearance()
         
-        navigationBarAppearace.tintColor = UIColor(colorType: .tint)
         navigationBarAppearace.barTintColor = UIColor(colorType: .navbar)
+        navigationBarAppearace.tintColor = UIColor(colorType: .background)
+        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(colorType: .background)]
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
