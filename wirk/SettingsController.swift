@@ -22,6 +22,7 @@ class SettingsController: UIViewController {
     }()
     
     func handleLogout() {
+        System.sharedInstance.logoutUser()
         let loginRegisterController = LoginRegisterController()
         present(loginRegisterController, animated: true, completion: nil)
     }

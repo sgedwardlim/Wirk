@@ -52,6 +52,13 @@ final class System {
         })
     }
     
+    func logoutUser() {
+        do {
+            try FIRAuth.auth()?.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
     
 //    private func updateUserToDatabase(withName name: String, email: String, completion: @escaping (Error?) -> ()) {
 //        let values = ["name": name,
