@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Customer {
     
@@ -18,4 +19,16 @@ struct Customer {
     var phone: String?
     var email: String?
     var dateCreated: Int?
+    
+    init(withSnapshot snapshot: FIRDataSnapshot) {
+        let dict = snapshot.value as? [String: Any]
+        
+        self.first = dict?["first"] as? String
+        self.middle = dict?["middle"] as? String
+        self.last = dict?["last"] as? String
+        self.address = dict?["address"] as? String
+        self.phone = dict?["phone"] as? String
+        self.email = dict?["email"] as? String
+        self.dateCreated = dict?["dateCreated"] as? Int
+    }
 }

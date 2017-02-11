@@ -16,6 +16,7 @@ class WirkTabBarController: UITabBarController {
         let settingsView = SettingsController()
         let settingsNav = UINavigationController(rootViewController: settingsView)
         settingsNav.tabBarItem.title = "Settings"
+        tabBar.barTintColor = UIColor(colorType: .navbar)
         
         viewControllers = [settingsNav]
     }

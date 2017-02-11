@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Create extension for UIColor to easily customize the apps main colors
 extension UIColor {
     
     enum ThemeColor: Int {
@@ -31,5 +32,16 @@ extension UIColor {
     
     convenience init(netHex:Int) {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
+    }
+}
+
+
+extension UIViewController {
+    
+    func displayAlert(_ title: String, message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        alertController.addAction(dismissAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

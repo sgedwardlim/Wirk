@@ -1,0 +1,6 @@
+framework module Pods_wirk {
+  umbrella header "Pods-wirk-umbrella.h"
+
+  export *
+  module * { export * }
+}

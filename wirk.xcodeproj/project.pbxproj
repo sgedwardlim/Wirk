@@ -20,6 +20,10 @@
 		2BF20A2A1E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A291E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift */; };
 		2BF20A2D1E4E866E00ACDFA0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A2C1E4E866E00ACDFA0 /* Extensions.swift */; };
 		2BF20A2F1E4EE8F100ACDFA0 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A2E1E4EE8F100ACDFA0 /* System.swift */; };
+		2BF20A331E4EF44C00ACDFA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A321E4EF44C00ACDFA0 /* User.swift */; };
+		2BF20A351E4EFD3A00ACDFA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BF20A341E4EFD3A00ACDFA0 /* GoogleService-Info.plist */; };
+		319E24358CF777C69B947A3A /* Pods_wirk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FDC8AE8A368A07260E4EA /* Pods_wirk.framework */; };
+		E30082C0579D4D36EE0369EC /* Pods_wirkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73A6D395CE2C4CB32FA160C /* Pods_wirkTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E86105D9C277AF4B775160A /* Pods-wirkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wirkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wirkTests/Pods-wirkTests.release.xcconfig"; sourceTree = "<group>"; };
 		2BF209F41E4DC79700ACDFA0 /* wirk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wirk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BF209F71E4DC79700ACDFA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BF209F91E4DC79700ACDFA0 /* LoginRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterController.swift; sourceTree = "<group>"; };
@@ -50,6 +55,13 @@
 		2BF20A291E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginRegisterController+Handler.swift"; sourceTree = "<group>"; };
 		2BF20A2C1E4E866E00ACDFA0 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2BF20A2E1E4EE8F100ACDFA0 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		2BF20A321E4EF44C00ACDFA0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2BF20A341E4EFD3A00ACDFA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		699834A6A298C6E5DC43C5BA /* Pods-wirk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wirk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wirk/Pods-wirk.debug.xcconfig"; sourceTree = "<group>"; };
+		700FDC8AE8A368A07260E4EA /* Pods_wirk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wirk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A73A6D395CE2C4CB32FA160C /* Pods_wirkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wirkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD300917F86F39F38F68BD61 /* Pods-wirkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wirkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wirkTests/Pods-wirkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D85FB4ADFBF97FBC08A7B8E9 /* Pods-wirk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wirk.release.xcconfig"; path = "Pods/Target Support Files/Pods-wirk/Pods-wirk.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				319E24358CF777C69B947A3A /* Pods_wirk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E30082C0579D4D36EE0369EC /* Pods_wirkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +90,8 @@
 				2BF209F61E4DC79700ACDFA0 /* wirk */,
 				2BF20A0B1E4DC79800ACDFA0 /* wirkTests */,
 				2BF209F51E4DC79700ACDFA0 /* Products */,
+				E767344F7D4118C4B49E2819 /* Pods */,
+				357B384DF435C62EDDA827A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +133,7 @@
 				2BF209FE1E4DC79700ACDFA0 /* Assets.xcassets */,
 				2BF20A001E4DC79700ACDFA0 /* LaunchScreen.storyboard */,
 				2BF20A031E4DC79700ACDFA0 /* Info.plist */,
+				2BF20A341E4EFD3A00ACDFA0 /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -125,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				2BF20A1C1E4DC95000ACDFA0 /* Customer.swift */,
+				2BF20A321E4EF44C00ACDFA0 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -157,6 +175,26 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		357B384DF435C62EDDA827A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				700FDC8AE8A368A07260E4EA /* Pods_wirk.framework */,
+				A73A6D395CE2C4CB32FA160C /* Pods_wirkTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E767344F7D4118C4B49E2819 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				699834A6A298C6E5DC43C5BA /* Pods-wirk.debug.xcconfig */,
+				D85FB4ADFBF97FBC08A7B8E9 /* Pods-wirk.release.xcconfig */,
+				BD300917F86F39F38F68BD61 /* Pods-wirkTests.debug.xcconfig */,
+				1E86105D9C277AF4B775160A /* Pods-wirkTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,9 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2BF20A111E4DC79800ACDFA0 /* Build configuration list for PBXNativeTarget "wirk" */;
 			buildPhases = (
+				9E6BC7BCD913493281374339 /* [CP] Check Pods Manifest.lock */,
 				2BF209F01E4DC79700ACDFA0 /* Sources */,
 				2BF209F11E4DC79700ACDFA0 /* Frameworks */,
 				2BF209F21E4DC79700ACDFA0 /* Resources */,
+				AE2144AE0FB9CCE7F9C217E7 /* [CP] Embed Pods Frameworks */,
+				2C42FB31D35A20995C5652AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,9 +222,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2BF20A141E4DC79800ACDFA0 /* Build configuration list for PBXNativeTarget "wirkTests" */;
 			buildPhases = (
+				5ECB5264DD6D66F2316A7D2C /* [CP] Check Pods Manifest.lock */,
 				2BF20A041E4DC79800ACDFA0 /* Sources */,
 				2BF20A051E4DC79800ACDFA0 /* Frameworks */,
 				2BF20A061E4DC79800ACDFA0 /* Resources */,
+				6488E883CEEB23E4FA48A47D /* [CP] Embed Pods Frameworks */,
+				CD65ED4988233122CCAE3643 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -243,6 +287,7 @@
 			files = (
 				2BF20A021E4DC79700ACDFA0 /* LaunchScreen.storyboard in Resources */,
 				2BF209FF1E4DC79700ACDFA0 /* Assets.xcassets in Resources */,
+				2BF20A351E4EFD3A00ACDFA0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +299,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C42FB31D35A20995C5652AA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-wirk/Pods-wirk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5ECB5264DD6D66F2316A7D2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6488E883CEEB23E4FA48A47D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-wirkTests/Pods-wirkTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E6BC7BCD913493281374339 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AE2144AE0FB9CCE7F9C217E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-wirk/Pods-wirk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD65ED4988233122CCAE3643 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-wirkTests/Pods-wirkTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2BF209F01E4DC79700ACDFA0 /* Sources */ = {
@@ -268,6 +406,7 @@
 				2BF20A201E4DD14300ACDFA0 /* WirkTabBarController.swift in Sources */,
 				2BF20A2A1E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift in Sources */,
 				2BF20A2F1E4EE8F100ACDFA0 /* System.swift in Sources */,
+				2BF20A331E4EF44C00ACDFA0 /* User.swift in Sources */,
 				2BF209F81E4DC79700ACDFA0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +537,7 @@
 		};
 		2BF20A121E4DC79800ACDFA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 699834A6A298C6E5DC43C5BA /* Pods-wirk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = wirk/Info.plist;
@@ -411,6 +551,7 @@
 		};
 		2BF20A131E4DC79800ACDFA0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D85FB4ADFBF97FBC08A7B8E9 /* Pods-wirk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = wirk/Info.plist;
@@ -424,6 +565,7 @@
 		};
 		2BF20A151E4DC79800ACDFA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD300917F86F39F38F68BD61 /* Pods-wirkTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -440,6 +582,7 @@
 		};
 		2BF20A161E4DC79800ACDFA0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E86105D9C277AF4B775160A /* Pods-wirkTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -472,6 +615,7 @@
 				2BF20A131E4DC79800ACDFA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2BF20A141E4DC79800ACDFA0 /* Build configuration list for PBXNativeTarget "wirkTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +624,7 @@
 				2BF20A161E4DC79800ACDFA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

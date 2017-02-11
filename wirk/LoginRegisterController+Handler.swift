@@ -68,12 +68,33 @@ extension LoginRegisterController {
     }
     
     private func handleLoginButtonTapped() {
-        print("login button tapped")
-        dismiss(animated: true, completion: nil)
+        let email = inputsContainerView.emailField.text
+        let pass = inputsContainerView.passwordField.text
+        System.sharedInstance.loginUser(withEmail: email, password: pass) { (error) in
+            if let error = error {
+                // User was unsucessful in logging in
+                self.displayAlert("Error", message: error.localizedDescription)
+                return
+            }
+            // Success in logging in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     private func handleRegisterButtonTapped() {
-        print("register button tapped")
-        dismiss(animated: true, completion: nil)
+        let name = inputsContainerView.companyNameField.text
+        let email = inputsContainerView.emailField.text
+        let pass = inputsContainerView.passwordField.text
+        
+        System.sharedInstance.registerUser(withEmail: email, pass: pass, name: name) { (error) in
+            if let error = error {
+                // User was unsucessful in being added to the database
+                // Perhaps delete user from database and ask user to try again
+                self.displayAlert("Error", message: error.localizedDescription)
+                return
+            }
+            // Succesfully added user into database, proceed
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
