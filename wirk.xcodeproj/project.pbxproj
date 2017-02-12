@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B4461E21E501C600000BC34 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4461E11E501C600000BC34 /* BaseCell.swift */; };
+		2B4461E41E501F600000BC34 /* CustomerRegistrationController+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4461E31E501F600000BC34 /* CustomerRegistrationController+Handler.swift */; };
 		2BF209F81E4DC79700ACDFA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF209F71E4DC79700ACDFA0 /* AppDelegate.swift */; };
 		2BF209FA1E4DC79700ACDFA0 /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF209F91E4DC79700ACDFA0 /* LoginRegisterController.swift */; };
 		2BF209FF1E4DC79700ACDFA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BF209FE1E4DC79700ACDFA0 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		1E86105D9C277AF4B775160A /* Pods-wirkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wirkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wirkTests/Pods-wirkTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B4461E11E501C600000BC34 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		2B4461E31E501F600000BC34 /* CustomerRegistrationController+Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomerRegistrationController+Handler.swift"; sourceTree = "<group>"; };
 		2BF209F41E4DC79700ACDFA0 /* wirk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wirk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BF209F71E4DC79700ACDFA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BF209F91E4DC79700ACDFA0 /* LoginRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterController.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				2BF20A251E4E568A00ACDFA0 /* InputsContainerView.swift */,
+				2B4461E11E501C600000BC34 /* BaseCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -162,11 +167,9 @@
 		2BF20A281E4E56CB00ACDFA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2BF209F91E4DC79700ACDFA0 /* LoginRegisterController.swift */,
-				2BF20A291E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift */,
+				2BF20A3A1E50071A00ACDFA0 /* LoginRegister */,
+				2BF20A3B1E50072D00ACDFA0 /* Customer */,
 				2BF20A211E4DD24900ACDFA0 /* SettingsController.swift */,
-				2BF20A381E5001F600ACDFA0 /* CustomerController.swift */,
-				2BF20A361E50013C00ACDFA0 /* CustomerRegistrationController.swift */,
 				2BF20A1F1E4DD14300ACDFA0 /* WirkTabBarController.swift */,
 			);
 			name = Controllers;
@@ -179,6 +182,25 @@
 				2BF20A2E1E4EE8F100ACDFA0 /* System.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		2BF20A3A1E50071A00ACDFA0 /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				2BF209F91E4DC79700ACDFA0 /* LoginRegisterController.swift */,
+				2BF20A291E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift */,
+			);
+			name = LoginRegister;
+			sourceTree = "<group>";
+		};
+		2BF20A3B1E50072D00ACDFA0 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				2BF20A381E5001F600ACDFA0 /* CustomerController.swift */,
+				2BF20A361E50013C00ACDFA0 /* CustomerRegistrationController.swift */,
+				2B4461E31E501F600000BC34 /* CustomerRegistrationController+Handler.swift */,
+			);
+			name = Customer;
 			sourceTree = "<group>";
 		};
 		357B384DF435C62EDDA827A0 /* Frameworks */ = {
@@ -409,6 +431,7 @@
 				2BF209FA1E4DC79700ACDFA0 /* LoginRegisterController.swift in Sources */,
 				2BF20A2D1E4E866E00ACDFA0 /* Extensions.swift in Sources */,
 				2BF20A261E4E568A00ACDFA0 /* InputsContainerView.swift in Sources */,
+				2B4461E21E501C600000BC34 /* BaseCell.swift in Sources */,
 				2BF20A391E5001F600ACDFA0 /* CustomerController.swift in Sources */,
 				2BF20A201E4DD14300ACDFA0 /* WirkTabBarController.swift in Sources */,
 				2BF20A2A1E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift in Sources */,
@@ -416,6 +439,7 @@
 				2BF20A2F1E4EE8F100ACDFA0 /* System.swift in Sources */,
 				2BF20A331E4EF44C00ACDFA0 /* User.swift in Sources */,
 				2BF209F81E4DC79700ACDFA0 /* AppDelegate.swift in Sources */,
+				2B4461E41E501F600000BC34 /* CustomerRegistrationController+Handler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
