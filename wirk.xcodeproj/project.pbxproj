@@ -22,6 +22,8 @@
 		2BF20A2F1E4EE8F100ACDFA0 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A2E1E4EE8F100ACDFA0 /* System.swift */; };
 		2BF20A331E4EF44C00ACDFA0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A321E4EF44C00ACDFA0 /* User.swift */; };
 		2BF20A351E4EFD3A00ACDFA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BF20A341E4EFD3A00ACDFA0 /* GoogleService-Info.plist */; };
+		2BF20A371E50013C00ACDFA0 /* CustomerRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A361E50013C00ACDFA0 /* CustomerRegistrationController.swift */; };
+		2BF20A391E5001F600ACDFA0 /* CustomerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A381E5001F600ACDFA0 /* CustomerController.swift */; };
 		319E24358CF777C69B947A3A /* Pods_wirk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FDC8AE8A368A07260E4EA /* Pods_wirk.framework */; };
 		E30082C0579D4D36EE0369EC /* Pods_wirkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73A6D395CE2C4CB32FA160C /* Pods_wirkTests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,8 @@
 		2BF20A2E1E4EE8F100ACDFA0 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		2BF20A321E4EF44C00ACDFA0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2BF20A341E4EFD3A00ACDFA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2BF20A361E50013C00ACDFA0 /* CustomerRegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRegistrationController.swift; sourceTree = "<group>"; };
+		2BF20A381E5001F600ACDFA0 /* CustomerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerController.swift; sourceTree = "<group>"; };
 		699834A6A298C6E5DC43C5BA /* Pods-wirk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wirk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wirk/Pods-wirk.debug.xcconfig"; sourceTree = "<group>"; };
 		700FDC8AE8A368A07260E4EA /* Pods_wirk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wirk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73A6D395CE2C4CB32FA160C /* Pods_wirkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wirkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +165,8 @@
 				2BF209F91E4DC79700ACDFA0 /* LoginRegisterController.swift */,
 				2BF20A291E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift */,
 				2BF20A211E4DD24900ACDFA0 /* SettingsController.swift */,
+				2BF20A381E5001F600ACDFA0 /* CustomerController.swift */,
+				2BF20A361E50013C00ACDFA0 /* CustomerRegistrationController.swift */,
 				2BF20A1F1E4DD14300ACDFA0 /* WirkTabBarController.swift */,
 			);
 			name = Controllers;
@@ -403,8 +409,10 @@
 				2BF209FA1E4DC79700ACDFA0 /* LoginRegisterController.swift in Sources */,
 				2BF20A2D1E4E866E00ACDFA0 /* Extensions.swift in Sources */,
 				2BF20A261E4E568A00ACDFA0 /* InputsContainerView.swift in Sources */,
+				2BF20A391E5001F600ACDFA0 /* CustomerController.swift in Sources */,
 				2BF20A201E4DD14300ACDFA0 /* WirkTabBarController.swift in Sources */,
 				2BF20A2A1E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift in Sources */,
+				2BF20A371E50013C00ACDFA0 /* CustomerRegistrationController.swift in Sources */,
 				2BF20A2F1E4EE8F100ACDFA0 /* System.swift in Sources */,
 				2BF20A331E4EF44C00ACDFA0 /* User.swift in Sources */,
 				2BF209F81E4DC79700ACDFA0 /* AppDelegate.swift in Sources */,
