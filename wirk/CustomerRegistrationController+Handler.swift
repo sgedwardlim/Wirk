@@ -22,6 +22,7 @@ extension CustomerRegistrationController {
         let location = customerHeaderCell?.locationField.text
         let phone = customerHeaderCell?.phoneField.text
         let email = customerHeaderCell?.emailField.text
+        let privacy = customerHeaderCell?.privacySwitchControl.isOn
         
         // Customer is not nill, already exist in the database
         if let customer = customer {
@@ -31,10 +32,12 @@ extension CustomerRegistrationController {
             customer.location = location ?? ""
             customer.phone = phone ?? ""
             customer.email = email ?? ""
+            // implict unwrap because variable can only be on or off, no nil state
+            customer.privacy = privacy!
             System.sharedInstance.uploadToDatabase(with: customer)
         } else {
             // new customer to be added to database
-            let customer = Customer(first, middle: middle, last: last, location: location, phone: phone, email: email)
+            let customer = Customer(first, middle: middle, last: last, location: location, phone: phone, email: email, privacy: privacy)
             System.sharedInstance.uploadToDatabase(with: customer)
         }
         dismiss(animated: true, completion: nil)

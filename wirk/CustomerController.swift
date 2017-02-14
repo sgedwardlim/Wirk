@@ -30,6 +30,8 @@ class CustomerController: UITableViewController {
         
         tableView?.alwaysBounceVertical = true
         tableView?.backgroundColor = UIColor(colorType: .background)
+        // This makes it so that it dosent show default empty cells
+        tableView?.tableFooterView = UIView(frame: .zero)
         
         navigationItem.title = "Customers"
         navigationItem.rightBarButtonItem = addCustomerButton

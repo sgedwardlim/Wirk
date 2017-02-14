@@ -50,6 +50,7 @@ final class System {
                                       "location": customer.location,
                                       "phone": customer.phone,
                                       "email": customer.email,
+                                      "privacy": customer.privacy,
                                       "timestamp": FIRServerValue.timestamp()]
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return

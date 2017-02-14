@@ -52,7 +52,7 @@ class CustomerRegistrationController: UICollectionViewController, UICollectionVi
     }
     // MARK: Collection View Header Functions
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 230)
+        return CGSize(width: view.frame.width, height: 285)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -72,11 +72,6 @@ class CustomerRegistrationController: UICollectionViewController, UICollectionVi
     }
 }
 
-
-
-
-
-
 class CustomerHeaderCell: BaseCell {
     //MARK: Properties
     var customer: Customer? {
@@ -90,6 +85,7 @@ class CustomerHeaderCell: BaseCell {
             locationField.text = customer.location
             phoneField.text = customer.phone
             emailField.text = customer.email
+            privacySwitchControl.isOn = customer.privacy
         }
     }
     
@@ -196,6 +192,31 @@ class CustomerHeaderCell: BaseCell {
         return button
     }()
     
+    let privacyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Privacy:"
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let privacySubtitle: UILabel = {
+        let label = UILabel()
+        label.text = "Only shows name of customer when refered to others"
+        label.numberOfLines = 2
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    var privacySwitchControl: UISwitch = {
+        let sc = UISwitch()
+        sc.isOn = false
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        return sc
+    }()
+    
     let headerDividerLine: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
@@ -216,6 +237,9 @@ class CustomerHeaderCell: BaseCell {
         addSubview(phoneDividerLine)
         addSubview(emailField)
         addSubview(emailDividerLine)
+        addSubview(privacyLabel)
+        addSubview(privacySubtitle)
+        addSubview(privacySwitchControl)
         addSubview(addJobButton)
         addSubview(headerDividerLine)
         
@@ -295,7 +319,22 @@ class CustomerHeaderCell: BaseCell {
         addJobButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
         addJobButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
         addJobButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        addJobButton.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 8).isActive = true
+        addJobButton.topAnchor.constraint(equalTo: privacySubtitle.bottomAnchor, constant: 8).isActive = true
+        
+        // x, y, width and height constrants iOS - 9 above
+        privacyLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        privacyLabel.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 8).isActive = true
+        privacyLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/3).isActive = true
+        
+        // x, y, width and height constrants iOS - 9 above
+        privacySubtitle.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        privacySubtitle.topAnchor.constraint(equalTo: privacyLabel.bottomAnchor, constant: 0).isActive = true
+        privacySubtitle.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2).isActive = true
+        
+        // x, y, width and height constrants iOS - 9 above
+        privacySwitchControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
+        privacySwitchControl.topAnchor.constraint(equalTo: privacyLabel.topAnchor, constant: 8).isActive = true
+        privacySwitchControl.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         // x, y, width and height constrants iOS - 9 above
         headerDividerLine.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
