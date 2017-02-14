@@ -96,6 +96,7 @@ class CustomerHeaderCell: BaseCell {
     var firstNameField: UITextField = {
         let field = UITextField()
         field.placeholder = "First"
+        field.font = UIFont.systemFont(ofSize: 16)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -110,6 +111,7 @@ class CustomerHeaderCell: BaseCell {
     var middleNameField: UITextField = {
         let field = UITextField()
         field.placeholder = "Middle"
+        field.font = UIFont.systemFont(ofSize: 16)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -124,6 +126,7 @@ class CustomerHeaderCell: BaseCell {
     var lastNameField: UITextField = {
         let field = UITextField()
         field.placeholder = "First"
+        field.font = UIFont.systemFont(ofSize: 16)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -138,6 +141,7 @@ class CustomerHeaderCell: BaseCell {
     var locationField: UITextField = {
         let field = UITextField()
         field.placeholder = "Location"
+        field.font = UIFont.systemFont(ofSize: 16)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -152,6 +156,7 @@ class CustomerHeaderCell: BaseCell {
     var phoneField: UITextField = {
         let field = UITextField()
         field.placeholder = "Phone"
+        field.font = UIFont.systemFont(ofSize: 16)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -166,6 +171,7 @@ class CustomerHeaderCell: BaseCell {
     var emailField: UITextField = {
         let field = UITextField()
         field.placeholder = "Email"
+        field.font = UIFont.systemFont(ofSize: 16)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()

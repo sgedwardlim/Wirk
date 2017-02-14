@@ -18,7 +18,7 @@ class Customer {
     var location: String
     var phone: String
     var email: String
-    var timestamp: [AnyHashable: Any]?
+    var timestamp: TimeInterval?
     
     // Convience properties
     var dateCreated: Date?
@@ -32,7 +32,7 @@ class Customer {
         self.location = location ?? ""
         self.phone = phone ?? ""
         self.email = email ?? ""
-        self.timestamp = FIRServerValue.timestamp()
+        // value of customer timestamp is created in the System class
     }
     
     init(withSnapshot snapshot: FIRDataSnapshot) {
@@ -47,8 +47,9 @@ class Customer {
         self.location = dict?["location"] as! String
         self.phone = dict?["phone"] as! String
         self.email = dict?["email"] as! String
+        self.timestamp = dict?["timestamp"] as? TimeInterval
         
-        guard let date = dict?["timestamp"] as? TimeInterval else { return }
+        guard let date = self.timestamp else { return }
         dateCreated = Date(timeIntervalSince1970: date / 1000)
     }
 }

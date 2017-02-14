@@ -22,8 +22,21 @@ extension CustomerRegistrationController {
         let location = customerHeaderCell?.locationField.text
         let phone = customerHeaderCell?.phoneField.text
         let email = customerHeaderCell?.emailField.text
-        customer = Customer(first, middle: middle, last: last, location: location, phone: phone, email: email)
-        System.sharedInstance.uploadToDatabase(with: customer!)
+        
+        // Customer is not nill, already exist in the database
+        if let customer = customer {
+            customer.first = first ?? ""
+            customer.middle = middle ?? ""
+            customer.last = last ?? ""
+            customer.location = location ?? ""
+            customer.phone = phone ?? ""
+            customer.email = email ?? ""
+            System.sharedInstance.uploadToDatabase(with: customer)
+        } else {
+            // new customer to be added to database
+            let customer = Customer(first, middle: middle, last: last, location: location, phone: phone, email: email)
+            System.sharedInstance.uploadToDatabase(with: customer)
+        }
         dismiss(animated: true, completion: nil)
     }
 }

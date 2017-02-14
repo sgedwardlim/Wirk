@@ -50,11 +50,17 @@ final class System {
                                       "location": customer.location,
                                       "phone": customer.phone,
                                       "email": customer.email,
-                                      "timestamp": customer.timestamp as Any]
+                                      "timestamp": FIRServerValue.timestamp()]
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
-        System.ref.child("customers").child(uid).childByAutoId().updateChildValues(values)
+        // Check if customer already exists in database
+        if let customerKey = customer.key {
+            System.ref.child("customers").child(uid).child(customerKey).updateChildValues(values)
+        } else {
+            // else create a new instance of the customer
+            System.ref.child("customers").child(uid).childByAutoId().updateChildValues(values)
+        }
     }
     
     // Registers a user to the FIREBASE DATABASE
