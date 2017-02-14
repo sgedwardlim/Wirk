@@ -27,6 +27,8 @@ class CustomerRegistrationController: UICollectionViewController, UICollectionVi
     
     private let jobCellId = "jobCellId"
     private let headerCellId = "headerCellId"
+    var customerHeaderCell: CustomerHeaderCell?
+    var customer: Customer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,8 @@ class CustomerRegistrationController: UICollectionViewController, UICollectionVi
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellId, for: indexPath) as! CustomerHeaderCell
+        customerHeaderCell = cell
+        customerHeaderCell?.customer = customer
         return cell
     }
     
@@ -68,9 +72,28 @@ class CustomerRegistrationController: UICollectionViewController, UICollectionVi
     }
 }
 
+
+
+
+
+
 class CustomerHeaderCell: BaseCell {
     //MARK: Properties
-    let firstNameField: UITextField = {
+    var customer: Customer? {
+        didSet{
+            // if customer is nil, then is a new customer
+            guard let customer = customer else { return }
+            
+            firstNameField.text = customer.first
+            middleNameField.text = customer.middle
+            lastNameField.text = customer.last
+            locationField.text = customer.location
+            phoneField.text = customer.phone
+            emailField.text = customer.email
+        }
+    }
+    
+    var firstNameField: UITextField = {
         let field = UITextField()
         field.placeholder = "First"
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +107,7 @@ class CustomerHeaderCell: BaseCell {
         return view
     }()
     
-    let middleNameField: UITextField = {
+    var middleNameField: UITextField = {
         let field = UITextField()
         field.placeholder = "Middle"
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -98,7 +121,7 @@ class CustomerHeaderCell: BaseCell {
         return view
     }()
     
-    let lastNameField: UITextField = {
+    var lastNameField: UITextField = {
         let field = UITextField()
         field.placeholder = "First"
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -112,7 +135,7 @@ class CustomerHeaderCell: BaseCell {
         return view
     }()
     
-    let locationField: UITextField = {
+    var locationField: UITextField = {
         let field = UITextField()
         field.placeholder = "Location"
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -126,7 +149,7 @@ class CustomerHeaderCell: BaseCell {
         return view
     }()
     
-    let phoneField: UITextField = {
+    var phoneField: UITextField = {
         let field = UITextField()
         field.placeholder = "Phone"
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -140,7 +163,7 @@ class CustomerHeaderCell: BaseCell {
         return view
     }()
     
-    let emailField: UITextField = {
+    var emailField: UITextField = {
         let field = UITextField()
         field.placeholder = "Email"
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -157,13 +180,13 @@ class CustomerHeaderCell: BaseCell {
     lazy var addJobButton: UIButton = {
         let button = UIButton()
         button.setTitle("New Job", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.gray, for: .highlighted)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
         button.backgroundColor = UIColor(colorType: .button)
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(handleAddJob), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     

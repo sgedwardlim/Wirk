@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 extension CustomerRegistrationController {
     
@@ -15,10 +16,16 @@ extension CustomerRegistrationController {
     }
     
     func handleSave() {
-        print("Saved")
+        let first = customerHeaderCell?.firstNameField.text
+        let middle = customerHeaderCell?.middleNameField.text
+        let last = customerHeaderCell?.lastNameField.text
+        let location = customerHeaderCell?.locationField.text
+        let phone = customerHeaderCell?.phoneField.text
+        let email = customerHeaderCell?.emailField.text
+        customer = Customer(first, middle: middle, last: last, location: location, phone: phone, email: email)
+        System.sharedInstance.uploadToDatabase(with: customer!)
+        dismiss(animated: true, completion: nil)
     }
-    
-    
 }
 
 extension CustomerHeaderCell {

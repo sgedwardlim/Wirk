@@ -44,4 +44,10 @@ extension UIViewController {
         alertController.addAction(dismissAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    func handleLogout() {
+        System.sharedInstance.logoutUser()
+        let loginRegisterController = LoginRegisterController()
+        present(loginRegisterController, animated: true, completion: nil)
+    }
 }

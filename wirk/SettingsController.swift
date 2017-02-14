@@ -21,11 +21,11 @@ class SettingsController: UIViewController {
         return button
     }()
     
-    func handleLogout() {
-        System.sharedInstance.logoutUser()
-        let loginRegisterController = LoginRegisterController()
-        present(loginRegisterController, animated: true, completion: nil)
-    }
+//    func handleLogout() {
+//        System.sharedInstance.logoutUser()
+//        let loginRegisterController = LoginRegisterController()
+//        present(loginRegisterController, animated: true, completion: nil)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

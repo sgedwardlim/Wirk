@@ -11,9 +11,53 @@ import Firebase
 
 final class System {
     
+    // MARK: Properties
     static let sharedInstance = System()
     static let ref = FIRDatabase.database().reference()
+    static let customerRef = FIRDatabase.database().reference().child("customers")
+    static let uid = FIRAuth.auth()?.currentUser
     
+    
+    
+    // Observe any changes to the customers node in FIREBASE and notify the caller
+    func observeCustomersDatabase(completion: @escaping ([Customer]) -> ()) {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }
+        
+        System.customerRef.child(uid).queryOrdered(byChild: "timestamp").observe(.value, with: { (snapshot) in
+            var customers = [Customer]()
+            
+            for customerSnapShot in snapshot.children {
+                let customer = Customer(withSnapshot: customerSnapShot as! FIRDataSnapshot)
+                // This ensures that the list is reversed
+                customers.insert(customer, at: 0)
+            }
+            completion(customers)
+        })
+    }
+    
+    // Remove all observers for the customers node
+    func removeCustomersObserver() {
+        System.customerRef.removeAllObservers()
+    }
+    
+    // Uploads a customer to the database
+    func uploadToDatabase(with customer: Customer) {
+        let values: [String : Any] = ["first": customer.first,
+                                      "middle": customer.middle,
+                                      "last": customer.last,
+                                      "location": customer.location,
+                                      "phone": customer.phone,
+                                      "email": customer.email,
+                                      "timestamp": customer.timestamp as Any]
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }
+        System.ref.child("customers").child(uid).childByAutoId().updateChildValues(values)
+    }
+    
+    // Registers a user to the FIREBASE DATABASE
     func registerUser(withEmail email: String?, pass: String?, name: String?, completion: @escaping (Error?) -> ()) {
         guard let email = email, let pass = pass, let name = name else {
             return
@@ -59,13 +103,4 @@ final class System {
             print ("Error signing out: %@", signOutError)
         }
     }
-    
-//    private func updateUserToDatabase(withName name: String, email: String, completion: @escaping (Error?) -> ()) {
-//        let values = ["name": name,
-//                      "email": email]
-//        System.ref.child("users").updateChildValues(values) { (error, ref) in
-//            // returns an object of optional error for the caller to handle
-//            completion(error)
-//        }
-//    }
 }

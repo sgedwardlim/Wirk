@@ -12,7 +12,7 @@ class WirkTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         // Create the Views that we want in our TabBar
-        let customersView = CustomerController(collectionViewLayout: UICollectionViewFlowLayout())
+        let customersView = CustomerController()
         let customersNav = UINavigationController(rootViewController: customersView)
         customersNav.tabBarItem.title = "Customers"
         customersNav.tabBarItem.image = UIImage(named: "customer")
