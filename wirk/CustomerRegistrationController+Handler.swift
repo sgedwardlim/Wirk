@@ -26,12 +26,12 @@ extension CustomerRegistrationController {
         
         // Customer is not nill, already exist in the database
         if let customer = customer {
-            customer.first = first ?? ""
-            customer.middle = middle ?? ""
-            customer.last = last ?? ""
-            customer.location = location ?? ""
-            customer.phone = phone ?? ""
-            customer.email = email ?? ""
+            customer.first = first
+            customer.middle = middle
+            customer.last = last
+            customer.location = location
+            customer.phone = phone
+            customer.email = email
             // implict unwrap because variable can only be on or off, no nil state
             customer.privacy = privacy!
             System.sharedInstance.uploadToDatabase(with: customer)
@@ -47,6 +47,10 @@ extension CustomerRegistrationController {
 extension CustomerHeaderCell {
     
     func handleAddJob() {
-        print("New job added")
+        let view = JobRegistrationController()
+        let nav = UINavigationController(rootViewController: view)
+        
+        guard let regController = registrationController else { return }
+        regController.present(nav, animated: true, completion: nil)
     }
 }

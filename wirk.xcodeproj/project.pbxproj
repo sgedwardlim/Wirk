@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2B4461E21E501C600000BC34 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4461E11E501C600000BC34 /* BaseCell.swift */; };
 		2B4461E41E501F600000BC34 /* CustomerRegistrationController+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4461E31E501F600000BC34 /* CustomerRegistrationController+Handler.swift */; };
+		2BD608DD1E543EC90010A028 /* JobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD608DC1E543EC90010A028 /* JobCell.swift */; };
+		2BD608DF1E543F490010A028 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD608DE1E543F490010A028 /* Job.swift */; };
+		2BD608E21E556ECD0010A028 /* JobRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD608E11E556ECD0010A028 /* JobRegistrationController.swift */; };
+		2BD608E41E5573910010A028 /* JobRegistrationController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD608E31E5573910010A028 /* JobRegistrationController+Handlers.swift */; };
 		2BF209F81E4DC79700ACDFA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF209F71E4DC79700ACDFA0 /* AppDelegate.swift */; };
 		2BF209FA1E4DC79700ACDFA0 /* LoginRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF209F91E4DC79700ACDFA0 /* LoginRegisterController.swift */; };
 		2BF209FF1E4DC79700ACDFA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BF209FE1E4DC79700ACDFA0 /* Assets.xcassets */; };
@@ -44,6 +48,10 @@
 		1E86105D9C277AF4B775160A /* Pods-wirkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wirkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wirkTests/Pods-wirkTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B4461E11E501C600000BC34 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		2B4461E31E501F600000BC34 /* CustomerRegistrationController+Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomerRegistrationController+Handler.swift"; sourceTree = "<group>"; };
+		2BD608DC1E543EC90010A028 /* JobCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobCell.swift; sourceTree = "<group>"; };
+		2BD608DE1E543F490010A028 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		2BD608E11E556ECD0010A028 /* JobRegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobRegistrationController.swift; sourceTree = "<group>"; };
+		2BD608E31E5573910010A028 /* JobRegistrationController+Handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JobRegistrationController+Handlers.swift"; sourceTree = "<group>"; };
 		2BF209F41E4DC79700ACDFA0 /* wirk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wirk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BF209F71E4DC79700ACDFA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BF209F91E4DC79700ACDFA0 /* LoginRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterController.swift; sourceTree = "<group>"; };
@@ -92,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BD608E01E556EA70010A028 /* Job */ = {
+			isa = PBXGroup;
+			children = (
+				2BD608E11E556ECD0010A028 /* JobRegistrationController.swift */,
+				2BD608E31E5573910010A028 /* JobRegistrationController+Handlers.swift */,
+			);
+			name = Job;
+			sourceTree = "<group>";
+		};
 		2BF209EB1E4DC79700ACDFA0 = {
 			isa = PBXGroup;
 			children = (
@@ -149,8 +166,9 @@
 		2BF20A1E1E4DC96300ACDFA0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2BF20A1C1E4DC95000ACDFA0 /* Customer.swift */,
 				2BF20A321E4EF44C00ACDFA0 /* User.swift */,
+				2BF20A1C1E4DC95000ACDFA0 /* Customer.swift */,
+				2BD608DE1E543F490010A028 /* Job.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -160,6 +178,7 @@
 			children = (
 				2BF20A251E4E568A00ACDFA0 /* InputsContainerView.swift */,
 				2B4461E11E501C600000BC34 /* BaseCell.swift */,
+				2BD608DC1E543EC90010A028 /* JobCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -169,6 +188,7 @@
 			children = (
 				2BF20A3A1E50071A00ACDFA0 /* LoginRegister */,
 				2BF20A3B1E50072D00ACDFA0 /* Customer */,
+				2BD608E01E556EA70010A028 /* Job */,
 				2BF20A211E4DD24900ACDFA0 /* SettingsController.swift */,
 				2BF20A1F1E4DD14300ACDFA0 /* WirkTabBarController.swift */,
 			);
@@ -427,19 +447,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BF20A1D1E4DC95000ACDFA0 /* Customer.swift in Sources */,
+				2BD608DD1E543EC90010A028 /* JobCell.swift in Sources */,
 				2BF20A221E4DD24900ACDFA0 /* SettingsController.swift in Sources */,
 				2BF209FA1E4DC79700ACDFA0 /* LoginRegisterController.swift in Sources */,
 				2BF20A2D1E4E866E00ACDFA0 /* Extensions.swift in Sources */,
 				2BF20A261E4E568A00ACDFA0 /* InputsContainerView.swift in Sources */,
+				2BD608E21E556ECD0010A028 /* JobRegistrationController.swift in Sources */,
 				2B4461E21E501C600000BC34 /* BaseCell.swift in Sources */,
 				2BF20A391E5001F600ACDFA0 /* CustomerController.swift in Sources */,
 				2BF20A201E4DD14300ACDFA0 /* WirkTabBarController.swift in Sources */,
 				2BF20A2A1E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift in Sources */,
 				2BF20A371E50013C00ACDFA0 /* CustomerRegistrationController.swift in Sources */,
 				2BF20A2F1E4EE8F100ACDFA0 /* System.swift in Sources */,
+				2BD608E41E5573910010A028 /* JobRegistrationController+Handlers.swift in Sources */,
 				2BF20A331E4EF44C00ACDFA0 /* User.swift in Sources */,
 				2BF209F81E4DC79700ACDFA0 /* AppDelegate.swift in Sources */,
 				2B4461E41E501F600000BC34 /* CustomerRegistrationController+Handler.swift in Sources */,
+				2BD608DF1E543F490010A028 /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

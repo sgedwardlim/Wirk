@@ -44,13 +44,13 @@ final class System {
     
     // Uploads a customer to the database
     func uploadToDatabase(with customer: Customer) {
-        let values: [String : Any] = ["first": customer.first,
-                                      "middle": customer.middle,
-                                      "last": customer.last,
-                                      "location": customer.location,
-                                      "phone": customer.phone,
-                                      "email": customer.email,
-                                      "privacy": customer.privacy,
+        let values: [String : Any] = ["first": customer.first!,
+                                      "middle": customer.middle!,
+                                      "last": customer.last!,
+                                      "location": customer.location!,
+                                      "phone": customer.phone!,
+                                      "email": customer.email!,
+                                      "privacy": customer.privacy!,
                                       "timestamp": FIRServerValue.timestamp()]
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return

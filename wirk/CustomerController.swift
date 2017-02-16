@@ -17,7 +17,7 @@ class CustomerController: UITableViewController {
     }()
     
     func handleAddCustomerTapped() {
-        let cutomerRegistrationController = CustomerRegistrationController(collectionViewLayout: UICollectionViewFlowLayout())
+        let cutomerRegistrationController = CustomerRegistrationController()
         let navController = UINavigationController(rootViewController: cutomerRegistrationController)
         present(navController, animated: true, completion: nil)
     }
@@ -74,7 +74,7 @@ class CustomerController: UITableViewController {
     // Present CustomerRegistrationController if one of the cells are selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedCustomer = customers?[indexPath.item] {
-            let view = CustomerRegistrationController(collectionViewLayout: UICollectionViewFlowLayout())
+            let view = CustomerRegistrationController()
             view.customer = selectedCustomer
             let nav = UINavigationController(rootViewController: view)
             present(nav, animated: true, completion: nil)
@@ -98,20 +98,19 @@ class CustomerController: UITableViewController {
     }
 }
 
-
-
-
-
-
-
-
 class CustomerCell: UITableViewCell {
     
     var customer: Customer? {
         didSet {
             guard let customer = customer else { return }
             
-            let fullName = "\(customer.first) \(customer.middle) \(customer.last)"
+            // Store the fully concatnated name
+            var fullName = ""
+            if let first = customer.first { fullName += "\(first)" }
+            // formated with a space before
+            if let middle = customer.middle  { fullName += " \(middle)" }
+            // formated with a space before
+            if let last = customer.last  { fullName += " \(last)" }
             nameLabel.text = fullName
             locationLabel.text = customer.location
 

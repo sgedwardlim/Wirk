@@ -12,7 +12,7 @@ import UIKit
  This class represents page shown when the user tries to create a new
  customer for the database
  */
-class CustomerRegistrationController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CustomerRegistrationController: UITableViewController {
     
     // MARK: Properties
     lazy var cancelButton: UIBarButtonItem = {
@@ -33,61 +33,68 @@ class CustomerRegistrationController: UICollectionViewController, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = UIColor(colorType: .background)
+        view.backgroundColor = UIColor(colorType: .background)
+        tableView?.backgroundColor = UIColor(colorType: .background)
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = saveButton
         
-        collectionView?.register(JobCell.self, forCellWithReuseIdentifier: jobCellId)
-        collectionView?.register(CustomerHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCellId)
+        
+        tableView?.register(JobCell.self, forCellReuseIdentifier: jobCellId)
+        tableView?.register(CustomerHeaderCell.self, forHeaderFooterViewReuseIdentifier: headerCellId)
     }
     
-    // MARK: Collection View Data Source Functions
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    // MARK: TableView Data Source Functions
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: jobCellId, for: indexPath) as! JobCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: jobCellId, for: indexPath) as! JobCell
+        cell.job = customer?.jobs?[indexPath.item]
         return cell
     }
-    // MARK: Collection View Header Functions
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 285)
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 285
     }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellId, for: indexPath) as! CustomerHeaderCell
-        customerHeaderCell = cell
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerCellId) as! CustomerHeaderCell
+        customerHeaderCell = headerView
+        customerHeaderCell?.registrationController = self
+        // initalize customer to set up fields
         customerHeaderCell?.customer = customer
-        return cell
+        return headerView
+
     }
     
-    // MARK: Collection View FLow Layout Function
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 100)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+    // MARK: TableView FLow Layout Function
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200.5
     }
 }
 
-class CustomerHeaderCell: BaseCell {
+class CustomerHeaderCell: UITableViewHeaderFooterView {
     //MARK: Properties
     var customer: Customer? {
         didSet{
             // if customer is nil, then is a new customer
             guard let customer = customer else { return }
             
-            firstNameField.text = customer.first
-            middleNameField.text = customer.middle
-            lastNameField.text = customer.last
-            locationField.text = customer.location
-            phoneField.text = customer.phone
-            emailField.text = customer.email
-            privacySwitchControl.isOn = customer.privacy
+            if let first = customer.first { firstNameField.text = first }
+            if let middle = customer.middle  { middleNameField.text = middle }
+            if let last = customer.last  { lastNameField.text = last }
+            if let location = customer.location  { locationField.text = location }
+            if let phone = customer.phone  { phoneField.text = phone }
+            if let email = customer.email  { emailField.text = email }
+            
+            guard let privacy = customer.privacy else { return }
+            privacySwitchControl.isOn = privacy
         }
     }
+    
+    var registrationController: CustomerRegistrationController?
     
     var firstNameField: UITextField = {
         let field = UITextField()
@@ -224,7 +231,18 @@ class CustomerHeaderCell: BaseCell {
         return view
     }()
     
-    override func setupViews() {
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
+        contentView.backgroundColor = UIColor(colorType: .background)
+        
         addSubview(firstNameField)
         addSubview(firstDividerLine)
         addSubview(middleNameField)
@@ -316,12 +334,6 @@ class CustomerHeaderCell: BaseCell {
         emailDividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         
         // x, y, width and height constrants iOS - 9 above
-        addJobButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
-        addJobButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
-        addJobButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        addJobButton.topAnchor.constraint(equalTo: privacySubtitle.bottomAnchor, constant: 8).isActive = true
-        
-        // x, y, width and height constrants iOS - 9 above
         privacyLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
         privacyLabel.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 8).isActive = true
         privacyLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/3).isActive = true
@@ -337,25 +349,15 @@ class CustomerHeaderCell: BaseCell {
         privacySwitchControl.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         // x, y, width and height constrants iOS - 9 above
+        addJobButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
+        addJobButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        addJobButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        addJobButton.topAnchor.constraint(equalTo: privacySubtitle.bottomAnchor, constant: 8).isActive = true
+        
+        // x, y, width and height constrants iOS - 9 above
         headerDividerLine.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         headerDividerLine.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         headerDividerLine.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         headerDividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
     }
 }
-
-class JobCell: BaseCell {
-    
-    let label: UILabel = {
-        let label = UILabel()
-        label.text = "TEST"
-        return label
-    }()
-    
-    override func setupViews() {
-        backgroundColor = .green
-        
-    }
-}
-
-
