@@ -8,9 +8,16 @@
 
 import UIKit
 
-class JobRegistrationController: UIViewController, UIScrollViewDelegate {
+class JobRegistrationController: UIViewController {
     
     // MARK: Properties
+    enum ImageTypes {
+        case before
+        case after
+    }
+    
+    var imageType = ImageTypes.before
+    
     lazy var cancelButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         return button
@@ -27,7 +34,7 @@ class JobRegistrationController: UIViewController, UIScrollViewDelegate {
         return view
     }()
     
-    lazy var scrollView: UIScrollView = {
+    let scrollView: UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -65,20 +72,22 @@ class JobRegistrationController: UIViewController, UIScrollViewDelegate {
         return view
     }()
     
-    let beforeImageView: UIImageView = {
+    lazy var beforeImageView: UIImageView = {
         let iv = UIImageView()
+        iv.isUserInteractionEnabled = true
+        iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleBeforeImageSelected)))
         iv.contentMode = .scaleAspectFill
         iv.image = UIImage(named: "beforeImage")
-        iv.backgroundColor = .blue
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
-    let afterImageView: UIImageView = {
+    lazy var afterImageView: UIImageView = {
         let iv = UIImageView()
+        iv.isUserInteractionEnabled = true
+        iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAfterImageSelected)))
         iv.contentMode = .scaleAspectFill
         iv.image = UIImage(named: "afterImage")
-        iv.backgroundColor = .green
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
