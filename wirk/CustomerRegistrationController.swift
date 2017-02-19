@@ -30,22 +30,61 @@ class CustomerRegistrationController: UITableViewController {
     var customerHeaderCell: CustomerHeaderCell?
     var customer: Customer?
     
+    // MARK: View Functionalities
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initalizeCustomer()
         
         view.backgroundColor = UIColor(colorType: .background)
         tableView?.backgroundColor = UIColor(colorType: .background)
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = saveButton
         
-        
+        // This makes it so that it dosent show default empty cells
+        tableView?.tableFooterView = UIView(frame: .zero)
+        // Register the cells to be used by tableView
         tableView?.register(JobCell.self, forCellReuseIdentifier: jobCellId)
         tableView?.register(CustomerHeaderCell.self, forHeaderFooterViewReuseIdentifier: headerCellId)
     }
     
+    // Creates a new customer in the database if customer dosent exist
+    private func initalizeCustomer() {
+        // check if customer has been initalized
+        if customer == nil {
+            // create a new customer in the database
+            let first = customerHeaderCell?.firstNameField.text
+            let middle = customerHeaderCell?.middleNameField.text
+            let last = customerHeaderCell?.lastNameField.text
+            let location = customerHeaderCell?.locationField.text
+            let phone = customerHeaderCell?.phoneField.text
+            let email = customerHeaderCell?.emailField.text
+            let privacy = customerHeaderCell?.privacySwitchControl.isOn
+            let customer = Customer(first, middle: middle, last: last, location: location, phone: phone, email: email, privacy: privacy)
+            System.sharedInstance.updateCustomerToDatabase(with: customer)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        System.sharedInstance.observeJobsDatabase(customer: customer) { (jobs) in
+            self.customer?.jobs = jobs
+            self.tableView?.reloadData()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        System.sharedInstance.removeJobsObserver()
+    }
+    
     // MARK: TableView Data Source Functions
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if let count = customer?.jobs?.count {
+            return count
+        }
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,10 +93,34 @@ class CustomerRegistrationController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let jobSelected = customer?.jobs?[indexPath.item]
+        // present the job registration view controller
+        let view = JobRegistrationController()
+        view.job = jobSelected
+        let nav = UINavigationController(rootViewController: view)
+        present(nav, animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let selectedJob = customer?.jobs?[indexPath.item] else {
+                return
+            }
+            selectedJob.ref?.removeValue()
+            System.sharedInstance.deleteImageFiles(for: selectedJob, customerKey: customer?.key)
+            tableView.reloadData()
+        }
+    }
+    
+    // MARK: Header cell functions
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 285
     }
-    
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerCellId) as! CustomerHeaderCell

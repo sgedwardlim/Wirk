@@ -33,7 +33,6 @@ class SettingsController: UIViewController {
         navigationItem.title = "Settings"
         navigationController?.navigationBar.tintColor = .black
         
-        
         view.backgroundColor = .white
         
         view.addSubview(logoutButton)

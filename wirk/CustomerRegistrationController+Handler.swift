@@ -34,11 +34,11 @@ extension CustomerRegistrationController {
             customer.email = email
             // implict unwrap because variable can only be on or off, no nil state
             customer.privacy = privacy!
-            System.sharedInstance.uploadToDatabase(with: customer)
+            System.sharedInstance.updateCustomerToDatabase(with: customer)
         } else {
             // new customer to be added to database
             let customer = Customer(first, middle: middle, last: last, location: location, phone: phone, email: email, privacy: privacy)
-            System.sharedInstance.uploadToDatabase(with: customer)
+            System.sharedInstance.updateCustomerToDatabase(with: customer)
         }
         dismiss(animated: true, completion: nil)
     }
@@ -48,9 +48,15 @@ extension CustomerHeaderCell {
     
     func handleAddJob() {
         let view = JobRegistrationController()
+        // Create a new job with the customer's key
+        view.job = Job(withCustomerKey: customer?.key)
         let nav = UINavigationController(rootViewController: view)
-        
         guard let regController = registrationController else { return }
         regController.present(nav, animated: true, completion: nil)
     }
 }
+
+
+
+
+

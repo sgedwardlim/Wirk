@@ -10,12 +10,7 @@ import UIKit
 
 class JobRegistrationController: UIViewController {
     
-    // MARK: Properties
-    enum ImageTypes {
-        case before
-        case after
-    }
-    
+    // This property is used to check which image was selected
     var imageType = ImageTypes.before
     
     lazy var cancelButton: UIBarButtonItem = {
@@ -92,8 +87,29 @@ class JobRegistrationController: UIViewController {
         return iv
     }()
     
+    var job: Job? {
+        didSet{
+            // if customer is nil, then is a new customer
+            guard let job = job else { return }
+            
+            if let jobType = job.jobType { jobTypeField.text = jobType }
+            if let jobDescription = job.jobDescription  { jobDescriptionField.text = jobDescription }
+            
+            if let beforeImageUrl = job.beforeImageUrl {
+                beforeImageView.loadImagesUsingCache(urlString: beforeImageUrl)
+            }
+            if let afterImageUrl = job.afterImageUrl {
+                afterImageView.loadImagesUsingCache(urlString: afterImageUrl)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+    
+    func setupView() {
         // Need so that view controller is not behind nav controller
         self.edgesForExtendedLayout = []
         
@@ -128,7 +144,7 @@ class JobRegistrationController: UIViewController {
         jobTypeField.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         jobTypeField.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8).isActive = true
         jobTypeField.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
+        
         // x, y, width and height constraints
         jobTypeDividerLine.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
         jobTypeDividerLine.topAnchor.constraint(equalTo: jobTypeField.bottomAnchor).isActive = true

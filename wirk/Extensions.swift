@@ -26,7 +26,6 @@ extension UIColor {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
         assert(blue >= 0 && blue <= 255, "Invalid blue component")
-        
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
     
@@ -35,6 +34,38 @@ extension UIColor {
     }
 }
 
+
+// MARK: ImageViews
+let imageCache = NSCache<AnyObject, AnyObject>()
+
+extension UIImageView {
+    func loadImagesUsingCache(urlString: String) {
+        
+        // Check cache for image first
+        if let cachedImage = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            self.image = cachedImage
+            return
+        }
+        
+        // Otherwise fire off a new download request
+        if let url = URL(string: urlString) {
+            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    
+                    if let downloadedImage = UIImage(data: data!) {
+                        imageCache.setObject(downloadedImage, forKey: urlString as AnyObject)
+                        self.image = downloadedImage
+                    }
+                }
+            }).resume()
+        }
+    }
+}
 
 extension UIViewController {
     

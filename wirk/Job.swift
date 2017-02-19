@@ -13,22 +13,36 @@ class Job {
     // MARK: Properties
     var key: String?
     var ref: FIRDatabaseReference?
+    var customerKey: String?
     
     var jobType: String?
     var jobDescription: String?
+    
+    var beforeImageKey: String?
     var beforeImageUrl: String?
     var beforeImage: UIImage?
+    
+    var afterImageKey: String?
     var afterImageUrl: String?
     var afterImage: UIImage?
     
-    init(_ jobType: String?, jobDescription: String?, beforeImage: UIImage?, afterImage: UIImage?) {
-        self.jobType = jobType
-        self.jobDescription = jobDescription
-        self.beforeImage = beforeImage
-        self.afterImage = afterImage
+//    init(_ jobType: String?, jobDescription: String?, beforeImage: UIImage?, afterImage: UIImage?) {
+//        self.jobType = jobType
+//        self.jobDescription = jobDescription
+//        self.beforeImage = beforeImage
+//        self.beforeImageKey = NSUUID().uuidString
+//        self.afterImage = afterImage
+//        self.afterImageKey = NSUUID().uuidString
+//    }
+    
+    init(withCustomerKey customerKey: String?) {
+        guard let key = customerKey else { return }
+        self.customerKey = key
+        self.beforeImageKey = NSUUID().uuidString
+        self.afterImageKey = NSUUID().uuidString
     }
     
-    init(withSnapshot snapshot: FIRDataSnapshot) {
+    init(withSnapshot snapshot: FIRDataSnapshot, belongsTo customerKey: String) {
         ref = snapshot.ref
         key = snapshot.key
         
@@ -36,8 +50,11 @@ class Job {
         
         self.jobType = dict?["jobType"] as? String
         self.jobDescription = dict?["jobDescription"] as? String
+        self.beforeImageKey = dict?["beforeImageKey"] as? String
         self.beforeImageUrl = dict?["beforeImageUrl"] as? String
+        self.afterImageKey = dict?["afterImageKey"] as? String
         self.afterImageUrl = dict?["afterImageUrl"] as? String
+        self.customerKey = customerKey
     }
     
 }

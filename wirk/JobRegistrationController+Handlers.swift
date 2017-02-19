@@ -15,9 +15,27 @@ extension JobRegistrationController: UIImagePickerControllerDelegate, UINavigati
     }
     
     func handleSave() {
-        print("Saved")
+        // disable the save button
+        saveButton.isEnabled = false
+        // retreive all the data in all the fields
+        let jobType = jobTypeField.text
+        let jobDescription = jobDescriptionField.text
+        let beforeImage = beforeImageView.image
+        let afterImage = afterImageView.image
+        
+        // unwrap the job and upload to database
+        if let job = job {
+            job.jobType = jobType
+            job.jobDescription = jobDescription
+            job.beforeImage = beforeImage
+            job.afterImage = afterImage
+            System.sharedInstance.updateJobToDatabase(with: job, customerKey: job.customerKey) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
+    // MARK: Image Selection Functions
     func handleBeforeImageSelected() {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -32,6 +50,7 @@ extension JobRegistrationController: UIImagePickerControllerDelegate, UINavigati
         present(picker, animated: true, completion: nil)
     }
     
+    // MARK: Image Picker Delegate Functions
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
@@ -40,7 +59,7 @@ extension JobRegistrationController: UIImagePickerControllerDelegate, UINavigati
         guard let selectedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage else {
             return
         }
-        
+        // determine which image was selected by the user
         switch imageType {
         case .before:
             beforeImageView.image = selectedImage
@@ -49,7 +68,6 @@ extension JobRegistrationController: UIImagePickerControllerDelegate, UINavigati
             afterImageView.image = selectedImage
             break
         }
-        
         dismiss(animated: true, completion: nil)
     }
 }

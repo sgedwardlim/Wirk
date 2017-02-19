@@ -12,24 +12,33 @@ class JobCell: UITableViewCell {
     
     var job: Job? {
         didSet {
+            guard let job = job else { return }
             
+            jobTypeLabel.text = job.jobType
+            jobDescriptionLabel.text = job.jobDescription
+            
+            if let beforeImageUrl = job.beforeImageUrl {
+                beforeImageView.loadImagesUsingCache(urlString: beforeImageUrl)
+            }
+            if let afterImageUrl = job.afterImageUrl {
+                afterImageView.loadImagesUsingCache(urlString: afterImageUrl)
+            }
         }
     }
     
     let beforeImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleToFill
+//        iv.contentMode = .scaleAspectFit
         iv.image = UIImage(named: "beforeImage")
-        iv.backgroundColor = .blue
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
     let afterImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleToFill
         iv.image = UIImage(named: "afterImage")
-        iv.backgroundColor = .green
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
