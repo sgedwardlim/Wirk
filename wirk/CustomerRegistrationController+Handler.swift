@@ -17,23 +17,33 @@ extension CustomerRegistrationController {
         // Check if customer is in FIREBASE Database
         System.customerRef.child(uid).child(key).observe(.value, with: { (snapshot) in
             /*
-             User selected the cancel option when user is not saved into FIREBASE
-             DATABASE, hence attempt to delete all assocaited jobs on the DATABASE,
-             Checks if the snapshot (reference to data in FIREBASE) exist
+             *  User selected the cancel option when user is not saved into FIREBASE
+             *  DATABASE, hence attempt to delete all assocaited jobs on the DATABASE,
+             *  Checks if the snapshot (reference to data in FIREBASE) exist
              */
             if (!snapshot.exists()) {
-                // If customer jobs return nil, then no jobs associated, dismiss view
-                if let jobs = self.customer?.jobs {
-                    // Iterate through all jobs associated with the current customer
-                    // and remove them From the FIREBASE DATABASE
-                    for job in jobs {
-                        job.ref?.removeValue()
-                        System.sharedInstance.deleteImageFiles(for: job, customerKey: key)
+                /*
+                 *  Displays alert message with options "YES" or "NO", if yes is selected
+                 *  save customer into the FIREBASE DATABASE, else if no is selected remove
+                 *  all instance of jobs that belong to the customer
+                */
+                let alertMessage = "You are about to navigate away without saving, would you like to save customer first?"
+                self.displayAlertWithYesNoOptions("Warning", message: alertMessage, handleNo: {
+                    if let jobs = self.customer?.jobs {
+                        for job in jobs {
+                            job.ref?.removeValue()
+                            System.sharedInstance.deleteImageFiles(for: job, customerKey: key)
+                        }
                     }
-                }
+                    self.dismiss(animated: true, completion: nil)
+                }, handleYes: {
+                    self.handleSave()
+                })
+            } else {
+                // customer already exists in the database, skip validation alerts
+                self.dismiss(animated: true, completion: nil)
             }
         })
-        dismiss(animated: true, completion: nil)
     }
     
     func handleSave() {

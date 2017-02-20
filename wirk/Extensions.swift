@@ -76,6 +76,19 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func displayAlertWithYesNoOptions(_ title: String?, message: String?, handleNo: @escaping () -> (), handleYes: @escaping () -> ()) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+         let noAction = UIAlertAction(title: "No", style: .destructive) { (alert) in
+            handleNo()
+        }
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            handleYes()
+        }
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     func handleLogout() {
         System.sharedInstance.logoutUser()
         let loginRegisterController = LoginRegisterController()
