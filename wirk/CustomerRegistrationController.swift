@@ -52,16 +52,9 @@ class CustomerRegistrationController: UITableViewController {
     private func initalizeCustomer() {
         // check if customer has been initalized
         if customer == nil {
-            // create a new customer in the database
-            let first = customerHeaderCell?.firstNameField.text
-            let middle = customerHeaderCell?.middleNameField.text
-            let last = customerHeaderCell?.lastNameField.text
-            let location = customerHeaderCell?.locationField.text
-            let phone = customerHeaderCell?.phoneField.text
-            let email = customerHeaderCell?.emailField.text
-            let privacy = customerHeaderCell?.privacySwitchControl.isOn
-            let customer = Customer(first, middle: middle, last: last, location: location, phone: phone, email: email, privacy: privacy)
-            System.sharedInstance.updateCustomerToDatabase(with: customer)
+            guard let uid = System.uid else { return }
+            let customerRef = System.customerRef.child(uid).childByAutoId()
+            customer = Customer(withCustomerRef: customerRef)
         }
     }
     
@@ -142,7 +135,7 @@ class CustomerHeaderCell: UITableViewHeaderFooterView {
     //MARK: Properties
     var customer: Customer? {
         didSet{
-            // if customer is nil, then is a new customer
+            // if customer is nil, then return because its a new customer with default values
             guard let customer = customer else { return }
             
             if let first = customer.first { firstNameField.text = first }
@@ -191,7 +184,7 @@ class CustomerHeaderCell: UITableViewHeaderFooterView {
     
     var lastNameField: UITextField = {
         let field = UITextField()
-        field.placeholder = "First"
+        field.placeholder = "Last"
         field.font = UIFont.systemFont(ofSize: 16)
         field.translatesAutoresizingMaskIntoConstraints = false
         return field

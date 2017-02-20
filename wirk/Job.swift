@@ -26,15 +26,6 @@ class Job {
     var afterImageUrl: String?
     var afterImage: UIImage?
     
-//    init(_ jobType: String?, jobDescription: String?, beforeImage: UIImage?, afterImage: UIImage?) {
-//        self.jobType = jobType
-//        self.jobDescription = jobDescription
-//        self.beforeImage = beforeImage
-//        self.beforeImageKey = NSUUID().uuidString
-//        self.afterImage = afterImage
-//        self.afterImageKey = NSUUID().uuidString
-//    }
-    
     init(withCustomerKey customerKey: String?) {
         guard let key = customerKey else { return }
         self.customerKey = key

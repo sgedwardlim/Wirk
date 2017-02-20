@@ -16,7 +16,7 @@ final class System {
     static let ref = FIRDatabase.database().reference()
     static let customerRef = FIRDatabase.database().reference().child("customers")
     static let jobRef = FIRDatabase.database().reference().child("jobs")
-    static let uid = FIRAuth.auth()?.currentUser
+    static let uid = FIRAuth.auth()?.currentUser?.uid
     
     
     
@@ -46,13 +46,13 @@ final class System {
     
     // Uploads a customer to the database
     func updateCustomerToDatabase(with customer: Customer) {
-        let values: [String : Any] = ["first": customer.first!,
-                                      "middle": customer.middle!,
-                                      "last": customer.last!,
-                                      "location": customer.location!,
-                                      "phone": customer.phone!,
-                                      "email": customer.email!,
-                                      "privacy": customer.privacy!,
+        let values: [String : Any] = ["first": customer.first as Any,
+                                      "middle": customer.middle as Any,
+                                      "last": customer.last as Any,
+                                      "location": customer.location as Any,
+                                      "phone": customer.phone as Any,
+                                      "email": customer.email as Any,
+                                      "privacy": customer.privacy as Any,
                                       "timestamp": FIRServerValue.timestamp()]
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
@@ -160,7 +160,7 @@ final class System {
     
     func deleteImageFiles(for job: Job, customerKey: String?) {
         // Check if user is logged in, else return
-        guard let uid = System.uid?.uid else { return }
+        guard let uid = System.uid else { return }
         // check if customer key exist
         guard let customerKey = customerKey else { return }
         // Ensure that the file to be deleted is in the database

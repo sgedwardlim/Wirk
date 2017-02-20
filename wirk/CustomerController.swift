@@ -93,6 +93,17 @@ class CustomerController: UITableViewController {
         if editingStyle == .delete {
             let customer = customers?.remove(at: indexPath.item)
             customer?.ref?.removeValue()
+            // Fetch all the jobs that belong to the customer
+            System.sharedInstance.observeJobsDatabase(customer: customer, completion: { (jobs) in
+                customer?.jobs = jobs
+                if let jobs = customer?.jobs {
+                    // Iterate through all jobs that belong to customer and remove from DATABASE
+                    for job in jobs {
+                        job.ref?.removeValue()
+                        System.sharedInstance.deleteImageFiles(for: job, customerKey: customer?.key)
+                    }
+                }
+            })
             tableView.reloadData()
         }
     }

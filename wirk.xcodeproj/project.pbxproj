@@ -189,11 +189,11 @@
 		2BF20A281E4E56CB00ACDFA0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2BF20A1F1E4DD14300ACDFA0 /* WirkTabBarController.swift */,
 				2BF20A3A1E50071A00ACDFA0 /* LoginRegister */,
 				2BF20A3B1E50072D00ACDFA0 /* Customer */,
 				2BD608E01E556EA70010A028 /* Job */,
 				2BF20A211E4DD24900ACDFA0 /* SettingsController.swift */,
-				2BF20A1F1E4DD14300ACDFA0 /* WirkTabBarController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

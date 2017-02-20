@@ -42,6 +42,11 @@ class Customer {
         // value of customer timestamp is created in the System class
     }
     
+    init(withCustomerRef ref: FIRDatabaseReference?) {
+        self.ref = ref
+        self.key = ref?.key
+    }
+    
     init(withSnapshot snapshot: FIRDataSnapshot) {
         ref = snapshot.ref
         key = snapshot.key

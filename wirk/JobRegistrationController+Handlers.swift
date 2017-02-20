@@ -24,6 +24,8 @@ extension JobRegistrationController: UIImagePickerControllerDelegate, UINavigati
         let afterImage = afterImageView.image
         
         // unwrap the job and upload to database
+        
+        // unwrap the job 
         if let job = job {
             job.jobType = jobType
             job.jobDescription = jobDescription
