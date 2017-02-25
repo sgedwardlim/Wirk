@@ -10,6 +10,7 @@
 		2B4461E21E501C600000BC34 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4461E11E501C600000BC34 /* BaseCell.swift */; };
 		2B4461E41E501F600000BC34 /* CustomerRegistrationController+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4461E31E501F600000BC34 /* CustomerRegistrationController+Handler.swift */; };
 		2B81831C1E5645C30047112F /* UICustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81831B1E5645C30047112F /* UICustomTextView.swift */; };
+		2B9012771E5B69C0005A01AA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9012761E5B69C0005A01AA /* LocationManager.swift */; };
 		2BD608DD1E543EC90010A028 /* JobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD608DC1E543EC90010A028 /* JobCell.swift */; };
 		2BD608DF1E543F490010A028 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD608DE1E543F490010A028 /* Job.swift */; };
 		2BD608E21E556ECD0010A028 /* JobRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD608E11E556ECD0010A028 /* JobRegistrationController.swift */; };
@@ -50,6 +51,7 @@
 		2B4461E11E501C600000BC34 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		2B4461E31E501F600000BC34 /* CustomerRegistrationController+Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomerRegistrationController+Handler.swift"; sourceTree = "<group>"; };
 		2B81831B1E5645C30047112F /* UICustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTextView.swift; sourceTree = "<group>"; };
+		2B9012761E5B69C0005A01AA /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2BD608DC1E543EC90010A028 /* JobCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobCell.swift; sourceTree = "<group>"; };
 		2BD608DE1E543F490010A028 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		2BD608E11E556ECD0010A028 /* JobRegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobRegistrationController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			children = (
 				2BF20A2C1E4E866E00ACDFA0 /* Extensions.swift */,
 				2BF20A2E1E4EE8F100ACDFA0 /* System.swift */,
+				2B9012761E5B69C0005A01AA /* LocationManager.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				2BF20A391E5001F600ACDFA0 /* CustomerController.swift in Sources */,
 				2BF20A201E4DD14300ACDFA0 /* WirkTabBarController.swift in Sources */,
 				2BF20A2A1E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift in Sources */,
+				2B9012771E5B69C0005A01AA /* LocationManager.swift in Sources */,
 				2BF20A371E50013C00ACDFA0 /* CustomerRegistrationController.swift in Sources */,
 				2BF20A2F1E4EE8F100ACDFA0 /* System.swift in Sources */,
 				2BD608E41E5573910010A028 /* JobRegistrationController+Handlers.swift in Sources */,

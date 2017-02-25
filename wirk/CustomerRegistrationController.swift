@@ -122,7 +122,6 @@ class CustomerRegistrationController: UITableViewController {
         // initalize customer to set up fields
         customerHeaderCell?.customer = customer
         return headerView
-
     }
     
     // MARK: TableView FLow Layout Function
@@ -197,8 +196,9 @@ class CustomerHeaderCell: UITableViewHeaderFooterView {
         return view
     }()
     
-    var locationField: UITextField = {
+    lazy var locationField: UITextField = {
         let field = UITextField()
+        field.addTarget(self, action: #selector(handleLocationFieldSelected), for: .editingDidBegin)
         field.placeholder = "Location"
         field.font = UIFont.systemFont(ofSize: 16)
         field.translatesAutoresizingMaskIntoConstraints = false

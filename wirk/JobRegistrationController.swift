@@ -71,7 +71,7 @@ class JobRegistrationController: UIViewController {
         let iv = UIImageView()
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleBeforeImageSelected)))
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleToFill
         iv.image = UIImage(named: "beforeImage")
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -81,7 +81,7 @@ class JobRegistrationController: UIViewController {
         let iv = UIImageView()
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAfterImageSelected)))
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleToFill
         iv.image = UIImage(named: "afterImage")
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
