@@ -42,7 +42,7 @@ class LocationManager: UITableViewController, UISearchBarDelegate, UISearchResul
     
     var currentLocation: MKMapItem?
     var filteredLocations: [MKMapItem]?
-    var customerRegistrationHeader: CustomerHeaderCell?
+    var customerRegistrationController: CustomerRegistrationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,8 +172,14 @@ class LocationManager: UITableViewController, UISearchBarDelegate, UISearchResul
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell = tableView.cellForRow(at: indexPath)
         let location = selectedCell?.detailTextLabel?.text
-        customerRegistrationHeader?.locationField.text = location
+        customerRegistrationController?.customer?.location = location
+        
+        if searchController.isActive == true {
+            // Dismisses twice because the first dismiss removes the cancel button
+            dismiss(animated: true, completion: nil)
+        }
         dismiss(animated: true, completion: nil)
+        
     }
 }
 

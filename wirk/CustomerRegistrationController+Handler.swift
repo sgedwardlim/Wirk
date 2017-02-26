@@ -84,7 +84,7 @@ extension CustomerHeaderCell {
     
     func handleLocationFieldSelected() {
         let view = LocationManager()
-        view.customerRegistrationHeader = self
+        view.customerRegistrationController = registrationController
         let nav = UINavigationController(rootViewController: view)
         registrationController?.present(nav, animated: true, completion: nil)
     }

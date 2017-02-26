@@ -216,6 +216,7 @@ class CustomerHeaderCell: UITableViewHeaderFooterView {
         let field = UITextField()
         field.placeholder = "Phone"
         field.font = UIFont.systemFont(ofSize: 16)
+        field.keyboardType = .phonePad
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -231,6 +232,7 @@ class CustomerHeaderCell: UITableViewHeaderFooterView {
         let field = UITextField()
         field.placeholder = "Email"
         field.font = UIFont.systemFont(ofSize: 16)
+        field.keyboardType = .emailAddress
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()

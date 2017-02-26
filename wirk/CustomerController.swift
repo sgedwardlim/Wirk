@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CustomerController: UITableViewController {
+class CustomerController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
     // MARK: Properties
     lazy var addCustomerButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(handleAddCustomerTapped))
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddCustomerTapped))
         return button
     }()
     
@@ -22,8 +22,25 @@ class CustomerController: UITableViewController {
         present(navController, animated: true, completion: nil)
     }
     
+    lazy var searchButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearchTapped))
+        return button
+    }()
+    
+    func handleSearchTapped() {
+        searchController = UISearchController(searchResultsController: nil)
+        definesPresentationContext = true
+        searchController?.dimsBackgroundDuringPresentation = false
+        searchController?.searchResultsUpdater = self
+        searchController?.searchBar.delegate = self
+        tableView.tableHeaderView = searchController?.searchBar
+        searchController?.searchBar.becomeFirstResponder()
+    }
+    
     private let customerCellId = "customerCellId"
+    var searchController: UISearchController?
     var customers: [Customer]?
+    var filteredCustomers: [Customer]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +51,7 @@ class CustomerController: UITableViewController {
         tableView?.tableFooterView = UIView(frame: .zero)
         
         navigationItem.title = "Customers"
-        navigationItem.rightBarButtonItem = addCustomerButton
+        navigationItem.rightBarButtonItems = [addCustomerButton, searchButton]
         tableView.register(CustomerCell.self, forCellReuseIdentifier: customerCellId)
         
         if System.uid == nil {
@@ -57,27 +74,83 @@ class CustomerController: UITableViewController {
         System.sharedInstance.removeCustomersObserver()
     }
     
+    // MARK: Search Controller
+    @available(iOS 8.0, *)
+    public func updateSearchResults(for searchController: UISearchController) {
+        guard let query = searchController.searchBar.text?.lowercased() else { return }
+        filteredCustomers = customers?.filter({ (customer) -> Bool in
+            // fields we want to search for
+            let first = customer.first?.lowercased()
+            let middle = customer.middle?.lowercased()
+            let last = customer.last?.lowercased()
+            let location = customer.location?.lowercased()
+            let phone = customer.phone?.lowercased()
+            
+            return first!.contains(query) ||
+                   middle!.contains(query) ||
+                   last!.contains(query) ||
+                   location!.contains(query) ||
+                   phone!.contains(query)
+        })
+        
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.isHidden = true
+        searchBar.isUserInteractionEnabled = false
+        tableView.tableHeaderView = nil
+    }
+    
     // MARK: TableView Data Source Functions
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = customers?.count {
+        
+        
+        // Checks if search field is being edited
+        if searchController?.isActive != nil && searchController?.searchBar.text != "" {
+            if let count = filteredCustomers?.count {
+                return count
+            }
+        }
+        // Display number of customers in a list
+        else if let count = customers?.count {
             return count
         }
         return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: customerCellId, for: indexPath) as! CustomerCell
-        cell.customer = customers?[indexPath.item]
-        return cell
+        // Checks if search field is being edited
+        if searchController?.isActive != nil && searchController?.searchBar.text != "" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: customerCellId, for: indexPath) as! CustomerCell
+            cell.customer = filteredCustomers?[indexPath.item]
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: customerCellId, for: indexPath) as! CustomerCell
+            cell.customer = customers?[indexPath.item]
+            return cell
+        }
     }
     
     // Present CustomerRegistrationController if one of the cells are selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let selectedCustomer = customers?[indexPath.item] {
-            let view = CustomerRegistrationController()
-            view.customer = selectedCustomer
-            let nav = UINavigationController(rootViewController: view)
-            present(nav, animated: true, completion: nil)
+        // Checks if search field is being edited
+        if searchController?.isActive != nil && searchController?.searchBar.text != "" {
+            if let selectedCustomer = filteredCustomers?[indexPath.item] {
+                let view = CustomerRegistrationController()
+                view.customer = selectedCustomer
+                let nav = UINavigationController(rootViewController: view)
+                present(nav, animated: true, completion: nil)
+            }
+        } else {
+            // search field was not selected normal customer list was selected
+            if let selectedCustomer = customers?[indexPath.item] {
+                let view = CustomerRegistrationController()
+                view.customer = selectedCustomer
+                let nav = UINavigationController(rootViewController: view)
+                present(nav, animated: true, completion: nil)
+            }
         }
     }
     
@@ -91,7 +164,14 @@ class CustomerController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let customer = customers?.remove(at: indexPath.item)
+            let customer: Customer?
+            if searchController?.isActive != nil && searchController?.searchBar.text != "" {
+                // remove value from filtered customers list
+                customer = filteredCustomers?.remove(at: indexPath.item)
+            } else {
+                // remove value from unfiltered customers list
+                customer = customers?.remove(at: indexPath.item)
+            }
             customer?.ref?.removeValue()
             // Fetch all the jobs that belong to the customer
             System.sharedInstance.observeJobsDatabase(customer: customer, completion: { (jobs) in
@@ -194,7 +274,6 @@ class CustomerCell: UITableViewCell {
         separatorInset = UIEdgeInsets.zero
         layoutMargins = UIEdgeInsets.zero
     }
-    
 }
 
 
