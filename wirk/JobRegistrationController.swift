@@ -50,8 +50,8 @@ class JobRegistrationController: UIViewController {
         return view
     }()
     
-    let jobDescriptionField: UICustomTextView = {
-        let field = UICustomTextView()
+    let jobDescriptionField: UITextView = {
+        let field = UITextView()
         field.delegate = field
         field.placeholder = "Job Description"
         field.font = UIFont.systemFont(ofSize: 16)
@@ -93,7 +93,10 @@ class JobRegistrationController: UIViewController {
             guard let job = job else { return }
             
             if let jobType = job.jobType { jobTypeField.text = jobType }
-            if let jobDescription = job.jobDescription  { jobDescriptionField.text = jobDescription }
+            if let jobDescription = job.jobDescription  {
+                jobDescriptionField.placeholder = ""
+                jobDescriptionField.text = jobDescription
+            }
             
             if let beforeImageUrl = job.beforeImageUrl {
                 beforeImageView.loadImagesUsingCache(urlString: beforeImageUrl)

@@ -122,6 +122,29 @@ class LocationManager: UITableViewController, UISearchBarDelegate, UISearchResul
         })
     }
     
+    // Convert a String location into a CLPlacemark and returns it to callee 
+    public static func forwardGeocoding(for location: String, completionHandler: @escaping (CLPlacemark?) -> ()) {
+        CLGeocoder().geocodeAddressString(location, completionHandler: { (placemarks, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard let placemarks = placemarks else { return }
+            completionHandler(placemarks.first)
+        })
+    }
+    
+    /*
+     *  Returns a tuple containing the values of the city and its corresponding zip code
+     */
+    public static func getCityAndZip(with placemark: CLPlacemark?, completion: @escaping (String?,String?) -> ()) {
+        
+        guard let pm = placemark else { return }
+        let mkplacemark = MKPlacemark(placemark: pm)
+        completion(mkplacemark.locality, mkplacemark.postalCode)
+    }
+    
     func parseAddress(selectedItem: MKPlacemark) -> String {
         // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""

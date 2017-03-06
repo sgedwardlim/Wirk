@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 class Job {
     // MARK: Properties
@@ -17,6 +18,11 @@ class Job {
     
     var jobType: String?
     var jobDescription: String?
+    var placemark: CLPlacemark?
+    var location: String?
+    var city: String?
+    var zip: String?
+    var distanceFromQuery: CLLocationDistance?
     
     var beforeImageKey: String?
     var beforeImageUrl: String?

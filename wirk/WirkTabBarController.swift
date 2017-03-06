@@ -17,7 +17,7 @@ class WirkTabBarController: UITabBarController {
         customersNav.tabBarItem.title = "Customers"
         customersNav.tabBarItem.image = UIImage(named: "customer")
         
-        let jobView = UIViewController()
+        let jobView = JobController()
         let jobNav = UINavigationController(rootViewController: jobView)
         jobNav.tabBarItem.title = "Jobs"
         jobNav.tabBarItem.image = UIImage(named: "job")

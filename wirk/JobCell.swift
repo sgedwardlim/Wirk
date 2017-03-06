@@ -29,7 +29,6 @@ class JobCell: UITableViewCell {
     let beforeImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
-//        iv.contentMode = .scaleAspectFit
         iv.image = UIImage(named: "beforeImage")
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -60,6 +59,21 @@ class JobCell: UITableViewCell {
         return label
     }()
     
+    // This property will be set by a cell
+    var jobLocationLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    // This property will be set by a cell
+    var distFromLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -76,6 +90,17 @@ class JobCell: UITableViewCell {
         addSubview(afterImageView)
         addSubview(jobTypeLabel)
         addSubview(jobDescriptionLabel)
+        addSubview(jobLocationLabel)
+        addSubview(distFromLabel)
+        
+        // x, y, width constraints
+        jobLocationLabel.leftAnchor.constraint(equalTo: beforeImageView.rightAnchor, constant: 8).isActive = true
+        jobLocationLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
+        jobLocationLabel.topAnchor.constraint(equalTo: jobDescriptionLabel.bottomAnchor, constant: 8).isActive = true
+        
+        // x, y constraints
+        distFromLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
+        distFromLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
         
         // x, y, width height constraints
         beforeImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true

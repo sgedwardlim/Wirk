@@ -105,7 +105,6 @@ class CustomerController: UITableViewController, UISearchBarDelegate, UISearchRe
     // MARK: TableView Data Source Functions
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
         // Checks if search field is being edited
         if searchController?.isActive != nil && searchController?.searchBar.text != "" {
             if let count = filteredCustomers?.count {

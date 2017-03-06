@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CoreLocation
 
 final class System {
     
@@ -67,9 +68,50 @@ final class System {
     }
     
     // MARK: Job Related Database Functions
+    func observeJobsDatabase(completion: @escaping ([Job]) -> ()) {
+        guard let uid = System.uid else { return }
+        
+        // Observe all customer id's within the Jobs node in FIREBASE
+        System.jobRef.child(uid).observe(.value, with: { (snapshot) in
+            var jobs = [Job]()
+            // Loop through every customer node in jobs database and save the key
+            for customerSnap in snapshot.children {
+                let customerSnap = customerSnap as! FIRDataSnapshot
+                let customerKey = customerSnap.key
+                
+                // Retreive the location of the customer
+                System.customerRef.child(uid).child(customerKey).observe(.value, with: { (snapshot) in
+                    let dict = snapshot.value as? [String: Any]
+                    let location = dict?["location"] as? String
+                    
+                    // loop through every job for every customer in the job database
+                    for jobSnap in customerSnap.children {
+                        let jobSnap = jobSnap as! FIRDataSnapshot
+                        let job = Job(withSnapshot: jobSnap, belongsTo: customerKey)
+                        // Safely unwrap optional location
+                        if let jobLocation = location {
+                            LocationManager.forwardGeocoding(for: jobLocation, completionHandler: { (placemark) in
+                                job.placemark = placemark
+                                job.location = location
+                                LocationManager.getCityAndZip(with: placemark, completion: { (city, zip) in
+                                    // Initalize these values here so that we can easily filter them in the jobController
+                                    job.city = city
+                                    job.zip = zip
+                                    jobs.insert(job, at: 0)
+                                    completion(jobs)
+                                })
+                                
+                            })
+                        }
+                    }
+                })
+            }
+        })
+    }
+    
     // Observe any changes to the jobs node in FIREBASE and notifies the caller
     func observeJobsDatabase(customer: Customer?, completion: @escaping ([Job]) -> ()) {
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+        guard let uid = System.uid else {
             return
         }
         guard let customerKey = customer?.key else {
