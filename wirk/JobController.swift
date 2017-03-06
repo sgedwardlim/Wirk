@@ -182,6 +182,7 @@ class JobController: UITableViewController, UISearchControllerDelegate, UISearch
             let job = jobs?[indexPath.row]
             cell.job = job
             cell.jobLocationLabel.text = job?.location
+            cell.distFromLabel.text = "10.0 mi"
 //            LocationManager.getCityAndZip(with: job?.placemark, completion: { (city, zip) in
 //                
 //                cell.jobLocationLabel.text = String(format: "%@, %@", city ?? "", zip ?? "")
@@ -192,7 +193,7 @@ class JobController: UITableViewController, UISearchControllerDelegate, UISearch
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200.5
+        return 164
     }
 }
 

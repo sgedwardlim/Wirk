@@ -126,7 +126,7 @@ class CustomerRegistrationController: UITableViewController {
     
     // MARK: TableView FLow Layout Function
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200.5
+        return 164
     }
 }
 

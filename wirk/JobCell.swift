@@ -30,6 +30,10 @@ class JobCell: UITableViewCell {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
         iv.image = UIImage(named: "beforeImage")
+        iv.layer.cornerRadius = 5
+        iv.layer.borderWidth = 0.5
+        iv.layer.borderColor = UIColor.lightGray.cgColor
+        iv.layer.masksToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -38,6 +42,10 @@ class JobCell: UITableViewCell {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
         iv.image = UIImage(named: "afterImage")
+        iv.layer.cornerRadius = 5
+        iv.layer.borderWidth = 0.5
+        iv.layer.borderColor = UIColor.lightGray.cgColor
+        iv.layer.masksToBounds = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -54,7 +62,8 @@ class JobCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 3
         label.text = "A very long Job Description that wraps almost three lines worth of space for an avergae phone size"
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -62,7 +71,7 @@ class JobCell: UITableViewCell {
     // This property will be set by a cell
     var jobLocationLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -70,6 +79,7 @@ class JobCell: UITableViewCell {
     var distFromLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -93,35 +103,35 @@ class JobCell: UITableViewCell {
         addSubview(jobLocationLabel)
         addSubview(distFromLabel)
         
-        // x, y, width constraints
-        jobLocationLabel.leftAnchor.constraint(equalTo: beforeImageView.rightAnchor, constant: 8).isActive = true
-        jobLocationLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
-        jobLocationLabel.topAnchor.constraint(equalTo: jobDescriptionLabel.bottomAnchor, constant: 8).isActive = true
-        
-        // x, y constraints
-        distFromLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
-        distFromLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        // x, y, width height constraints
+        beforeImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
+        beforeImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        beforeImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        beforeImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
         // x, y, width height constraints
-        beforeImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        beforeImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        beforeImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        beforeImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        // x, y, width height constraints
-        afterImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        afterImageView.topAnchor.constraint(equalTo: beforeImageView.bottomAnchor).isActive = true
-        afterImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        afterImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        afterImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
+        afterImageView.topAnchor.constraint(equalTo: beforeImageView.bottomAnchor, constant: 8).isActive = true
+        afterImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        afterImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
         // x, y, width height constraints
         jobTypeLabel.leftAnchor.constraint(equalTo: beforeImageView.rightAnchor, constant: 8).isActive = true
-        jobTypeLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        jobTypeLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
         jobTypeLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
+        
+        // x, y constraints
+        distFromLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
+        distFromLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4).isActive = true
+        
+        // x, y, width constraints
+        jobLocationLabel.leftAnchor.constraint(equalTo: beforeImageView.rightAnchor, constant: 8).isActive = true
+        jobLocationLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
+        jobLocationLabel.topAnchor.constraint(equalTo: jobTypeLabel.bottomAnchor, constant: 4).isActive = true
         
         // x, y, width height constraints
         jobDescriptionLabel.leftAnchor.constraint(equalTo: beforeImageView.rightAnchor, constant: 10).isActive = true
-        jobDescriptionLabel.topAnchor.constraint(equalTo: jobTypeLabel.bottomAnchor, constant: 8).isActive = true
+        jobDescriptionLabel.topAnchor.constraint(equalTo: jobLocationLabel.bottomAnchor, constant: 4).isActive = true
         jobDescriptionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
         
         // Remove the gap that the default seperatior line given
