@@ -87,14 +87,18 @@ extension LoginRegisterController {
         let pass = inputsContainerView.passwordField.text
         
         System.sharedInstance.registerUser(withEmail: email, pass: pass, name: name) { (error) in
-            if let error = error {
-                // User was unsucessful in being added to the database
-                // Perhaps delete user from database and ask user to try again
-                self.displayAlert("Error", message: error.localizedDescription)
-                return
-            }
-            // Succesfully added user into database, proceed
-            self.dismiss(animated: true, completion: nil)
+//            if let error = error {
+//                // User was unsucessful in being added to the database
+//                // Perhaps delete user from database and ask user to try again
+//                self.displayAlert("Error", message: error.localizedDescription)
+//                return
+//            }
+            
+            self.user = User(name: name, password: pass, email: email)
+            
+            // Succesfully added user into database, proceed to payment options page
+            let view = PaymentOptionsController(collectionViewLayout: UICollectionViewFlowLayout())
+            self.present(view, animated: true, completion: nil)
         }
     }
 }

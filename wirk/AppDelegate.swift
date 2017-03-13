@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
         
+        // Start the StoreManager class
+        StoreManager.shared.setup()
+        
         customizeAppColorTheme()
         
         window = UIWindow(frame: UIScreen.main.bounds)

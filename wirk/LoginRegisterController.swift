@@ -41,6 +41,7 @@ class LoginRegisterController: UIViewController {
     }()
     
     var inputsContainerViewHeightAnchor: NSLayoutConstraint?
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()

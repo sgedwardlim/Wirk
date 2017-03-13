@@ -168,13 +168,13 @@ class JobRegistrationController: UIViewController {
         
         // x, y, width and height constraints
         beforeImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        beforeImageView.topAnchor.constraint(equalTo: jobDescriptionDividerLine.bottomAnchor).isActive = true
+        beforeImageView.topAnchor.constraint(equalTo: jobDescriptionDividerLine.bottomAnchor, constant: 20).isActive = true
         beforeImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         beforeImageView.heightAnchor.constraint(equalTo: beforeImageView.widthAnchor).isActive = true
         
         // x, y, width and height constraints
         afterImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        afterImageView.topAnchor.constraint(equalTo: beforeImageView.bottomAnchor).isActive = true
+        afterImageView.topAnchor.constraint(equalTo: beforeImageView.bottomAnchor, constant: 20).isActive = true
         afterImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         afterImageView.heightAnchor.constraint(equalTo: afterImageView.widthAnchor).isActive = true
         afterImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true

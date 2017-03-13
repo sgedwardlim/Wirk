@@ -49,6 +49,8 @@ class CustomerController: UITableViewController, UISearchBarDelegate, UISearchRe
         tableView?.backgroundColor = UIColor(colorType: .background)
         // This makes it so that it dosent show default empty cells
         tableView?.tableFooterView = UIView(frame: .zero)
+        // Needed for iPad displays so that tableview seperator line extends full width
+        tableView?.cellLayoutMarginsFollowReadableWidth = false
         
         navigationItem.title = "Customers"
         navigationItem.rightBarButtonItems = [addCustomerButton, searchButton]
@@ -58,6 +60,17 @@ class CustomerController: UITableViewController, UISearchBarDelegate, UISearchRe
             System.sharedInstance.logoutUser()
             handleLogout()
         }
+        
+        // Add observer so that we get notified whenever the products get loaded
+        NotificationCenter.default.addObserver(self, selector: #selector(SKProductsDidLoadFromiTunes), name: NSNotification.Name.init("SKProductsHaveLoaded"), object: nil)
+        
+        // Call function anyways incase products got loaded before observer is added
+        SKProductsDidLoadFromiTunes()
+    }
+    
+    func SKProductsDidLoadFromiTunes() {
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

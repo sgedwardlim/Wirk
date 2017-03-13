@@ -61,6 +61,8 @@ class JobController: UITableViewController, UISearchControllerDelegate, UISearch
         // This makes it so that it dosent show default empty cells
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.register(JobCell.self, forCellReuseIdentifier: cellId)
+        // Needed for iPad displays so that tableview seperator line extends full width
+        tableView.cellLayoutMarginsFollowReadableWidth = false
         
         navigationItem.title = "Jobs"
         navigationItem.rightBarButtonItem = searchButton
