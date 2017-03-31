@@ -142,6 +142,39 @@ class JobController: UITableViewController, UISearchControllerDelegate, UISearch
     }
     
     // MARK: TableView DataSource
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // create the share button when user swipes left on a cell
+        let share = UITableViewRowAction(style: .normal, title: "Add to list") { (action, index) in
+            // get the job the user selected
+            var job: Job?
+            if self.searchController?.isActive != nil && self.searchController?.searchBar.text != "" {
+                // user is filtering searches
+                job = self.filteredJobs?[indexPath.row]
+            } else {
+                job = self.jobs?[indexPath.row]
+            }
+            guard let unwrappedJob = job else { return }
+            SelectedJobs.shared.jobs.insert(unwrappedJob, at: 0)
+            
+            var currBadgeValue = self.tabBarController?.tabBar.items?[2].badgeValue
+            if currBadgeValue == nil {
+                currBadgeValue = "1"
+            } else {
+                currBadgeValue = String(Int(currBadgeValue!)! + 1)
+            }
+            self.tabBarController?.tabBar.items?[2].badgeValue = currBadgeValue
+            self.jobs!.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+        return [share]
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController?.isActive != nil && searchController?.searchBar.text != "" {
             if let count = filteredJobs?.count {
@@ -189,7 +222,6 @@ class JobController: UITableViewController, UISearchControllerDelegate, UISearch
 //                
 //                cell.jobLocationLabel.text = String(format: "%@, %@", city ?? "", zip ?? "")
 //            })
-            
             return cell
         }
     }

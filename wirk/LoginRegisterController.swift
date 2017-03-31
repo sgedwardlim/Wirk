@@ -8,10 +8,10 @@
 
 import UIKit
 
-class LoginRegisterController: UIViewController {
+class LoginRegisterController: UICollectionViewCell {
     
     // MARK: Properties
-    let loginRegisterSegmentedControl: UISegmentedControl = {
+    lazy var loginRegisterSegmentedControl: UISegmentedControl = {
         let lrs = LoginRegisterSegments.self
         let sc = UISegmentedControl(items: [lrs.login.rawValue, lrs.register.rawValue])
         sc.tintColor = UIColor(colorType: .button)
@@ -40,37 +40,44 @@ class LoginRegisterController: UIViewController {
         return button
     }()
     
+    weak var introductionController: IntroductionController?
     var inputsContainerViewHeightAnchor: NSLayoutConstraint?
     var user: User?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor(colorType: .background)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
+        backgroundColor = UIColor(colorType: .background)
         
-        view.addSubview(loginRegisterSegmentedControl)
-        view.addSubview(inputsContainerView)
-        view.addSubview(loginRegisterButton)
+        addSubview(loginRegisterSegmentedControl)
+        addSubview(inputsContainerView)
+        addSubview(loginRegisterButton)
         
         // x, y, width and height constraints for the loginRegisterSegmentedControl
-        loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         loginRegisterSegmentedControl.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
         loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         // x, y, width and height constraints for the inputsContainerView
-        inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20).isActive = true
+        inputsContainerView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        inputsContainerView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        inputsContainerView.widthAnchor.constraint(equalTo: widthAnchor, constant: -20).isActive = true
         inputsContainerViewHeightAnchor = inputsContainerView.heightAnchor.constraint(equalToConstant: 120)
         inputsContainerViewHeightAnchor?.isActive = true
         
         // x, y, width and height constraints for the loginRegisterButton
-        loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginRegisterButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 12).isActive = true
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
-
-
 }
 

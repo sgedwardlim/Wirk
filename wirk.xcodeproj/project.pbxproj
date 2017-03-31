@@ -7,8 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B1F85FF1E88A448004DB528 /* EmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F85FE1E88A448004DB528 /* EmailController.swift */; };
+		2B1F86011E8B4797004DB528 /* SelectedJobs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F86001E8B4797004DB528 /* SelectedJobs.swift */; };
 		2B4461E21E501C600000BC34 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4461E11E501C600000BC34 /* BaseCell.swift */; };
 		2B4461E41E501F600000BC34 /* CustomerRegistrationController+Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4461E31E501F600000BC34 /* CustomerRegistrationController+Handler.swift */; };
+		2B4F0C991E8DA6D600359B96 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F0C981E8DA6D600359B96 /* UserPreferences.swift */; };
+		2B4F0C9B1E8E208700359B96 /* referal.html in Resources */ = {isa = PBXBuildFile; fileRef = 2B4F0C9A1E8E208700359B96 /* referal.html */; };
+		2B4F0C9D1E8E208F00359B96 /* single_job.html in Resources */ = {isa = PBXBuildFile; fileRef = 2B4F0C9C1E8E208F00359B96 /* single_job.html */; };
+		2B4F0C9F1E8E20A700359B96 /* ReferalComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F0C9E1E8E20A700359B96 /* ReferalComposer.swift */; };
+		2B4F0CA11E8E210600359B96 /* CustomPrintPageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F0CA01E8E210600359B96 /* CustomPrintPageRenderer.swift */; };
+		2B4F0CCB1E8E2FFB00359B96 /* EmailPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F0CCA1E8E2FFB00359B96 /* EmailPreviewViewController.swift */; };
+		2B6610341E77CF8C0006BCAF /* IntroductionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6610331E77CF8C0006BCAF /* IntroductionController.swift */; };
 		2B81831C1E5645C30047112F /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81831B1E5645C30047112F /* UITextViewExtension.swift */; };
 		2B9012771E5B69C0005A01AA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9012761E5B69C0005A01AA /* LocationManager.swift */; };
 		2B9012971E62698B005A01AA /* JobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9012961E62698B005A01AA /* JobController.swift */; };
@@ -37,6 +46,7 @@
 		2BF20A351E4EFD3A00ACDFA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BF20A341E4EFD3A00ACDFA0 /* GoogleService-Info.plist */; };
 		2BF20A371E50013C00ACDFA0 /* CustomerRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A361E50013C00ACDFA0 /* CustomerRegistrationController.swift */; };
 		2BF20A391E5001F600ACDFA0 /* CustomerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF20A381E5001F600ACDFA0 /* CustomerController.swift */; };
+		2BF5D75D1E7B547600B01BCF /* IntroductionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5D75C1E7B547600B01BCF /* IntroductionPage.swift */; };
 		319E24358CF777C69B947A3A /* Pods_wirk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700FDC8AE8A368A07260E4EA /* Pods_wirk.framework */; };
 		E30082C0579D4D36EE0369EC /* Pods_wirkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73A6D395CE2C4CB32FA160C /* Pods_wirkTests.framework */; };
 /* End PBXBuildFile section */
@@ -53,8 +63,17 @@
 
 /* Begin PBXFileReference section */
 		1E86105D9C277AF4B775160A /* Pods-wirkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wirkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wirkTests/Pods-wirkTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B1F85FE1E88A448004DB528 /* EmailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailController.swift; sourceTree = "<group>"; };
+		2B1F86001E8B4797004DB528 /* SelectedJobs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedJobs.swift; sourceTree = "<group>"; };
 		2B4461E11E501C600000BC34 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		2B4461E31E501F600000BC34 /* CustomerRegistrationController+Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomerRegistrationController+Handler.swift"; sourceTree = "<group>"; };
+		2B4F0C981E8DA6D600359B96 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		2B4F0C9A1E8E208700359B96 /* referal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = referal.html; sourceTree = "<group>"; };
+		2B4F0C9C1E8E208F00359B96 /* single_job.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = single_job.html; sourceTree = "<group>"; };
+		2B4F0C9E1E8E20A700359B96 /* ReferalComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferalComposer.swift; sourceTree = "<group>"; };
+		2B4F0CA01E8E210600359B96 /* CustomPrintPageRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPrintPageRenderer.swift; sourceTree = "<group>"; };
+		2B4F0CCA1E8E2FFB00359B96 /* EmailPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailPreviewViewController.swift; sourceTree = "<group>"; };
+		2B6610331E77CF8C0006BCAF /* IntroductionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionController.swift; sourceTree = "<group>"; };
 		2B81831B1E5645C30047112F /* UITextViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		2B9012761E5B69C0005A01AA /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2B9012961E62698B005A01AA /* JobController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobController.swift; sourceTree = "<group>"; };
@@ -87,6 +106,7 @@
 		2BF20A341E4EFD3A00ACDFA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2BF20A361E50013C00ACDFA0 /* CustomerRegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRegistrationController.swift; sourceTree = "<group>"; };
 		2BF20A381E5001F600ACDFA0 /* CustomerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerController.swift; sourceTree = "<group>"; };
+		2BF5D75C1E7B547600B01BCF /* IntroductionPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionPage.swift; sourceTree = "<group>"; };
 		699834A6A298C6E5DC43C5BA /* Pods-wirk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wirk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wirk/Pods-wirk.debug.xcconfig"; sourceTree = "<group>"; };
 		700FDC8AE8A368A07260E4EA /* Pods_wirk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wirk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73A6D395CE2C4CB32FA160C /* Pods_wirkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wirkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +135,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B4F0CCC1E8E471900359B96 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				2B1F85FE1E88A448004DB528 /* EmailController.swift */,
+				2B4F0CCA1E8E2FFB00359B96 /* EmailPreviewViewController.swift */,
+			);
+			name = Email;
+			sourceTree = "<group>";
+		};
 		2BD608E01E556EA70010A028 /* Job */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +177,8 @@
 		2BF209F61E4DC79700ACDFA0 /* wirk */ = {
 			isa = PBXGroup;
 			children = (
+				2B4F0C9C1E8E208F00359B96 /* single_job.html */,
+				2B4F0C9A1E8E208700359B96 /* referal.html */,
 				2BF20A2B1E4E865F00ACDFA0 /* Helpers */,
 				2BF20A271E4E56BD00ACDFA0 /* Views */,
 				2BF20A281E4E56CB00ACDFA0 /* Controllers */,
@@ -183,8 +214,11 @@
 			isa = PBXGroup;
 			children = (
 				2BF20A321E4EF44C00ACDFA0 /* User.swift */,
+				2B4F0C981E8DA6D600359B96 /* UserPreferences.swift */,
 				2BF20A1C1E4DC95000ACDFA0 /* Customer.swift */,
 				2BD608DE1E543F490010A028 /* Job.swift */,
+				2BF5D75C1E7B547600B01BCF /* IntroductionPage.swift */,
+				2B1F86001E8B4797004DB528 /* SelectedJobs.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -207,7 +241,10 @@
 				2BF20A3A1E50071A00ACDFA0 /* LoginRegister */,
 				2BF20A3B1E50072D00ACDFA0 /* Customer */,
 				2BD608E01E556EA70010A028 /* Job */,
+				2B4F0CCC1E8E471900359B96 /* Email */,
 				2BF20A211E4DD24900ACDFA0 /* SettingsController.swift */,
+				2B4F0C9E1E8E20A700359B96 /* ReferalComposer.swift */,
+				2B4F0CA01E8E210600359B96 /* CustomPrintPageRenderer.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -227,6 +264,7 @@
 		2BF20A3A1E50071A00ACDFA0 /* LoginRegister */ = {
 			isa = PBXGroup;
 			children = (
+				2B6610331E77CF8C0006BCAF /* IntroductionController.swift */,
 				2BF209F91E4DC79700ACDFA0 /* LoginRegisterController.swift */,
 				2BF20A291E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift */,
 				2B967C651E74854A0032BB97 /* PaymentOptionsController.swift */,
@@ -361,8 +399,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B4F0C9B1E8E208700359B96 /* referal.html in Resources */,
 				2BF20A021E4DC79700ACDFA0 /* LaunchScreen.storyboard in Resources */,
 				2BF209FF1E4DC79700ACDFA0 /* Assets.xcassets in Resources */,
+				2B4F0C9D1E8E208F00359B96 /* single_job.html in Resources */,
 				2BF20A351E4EFD3A00ACDFA0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,20 +517,28 @@
 				2B81831C1E5645C30047112F /* UITextViewExtension.swift in Sources */,
 				2BF20A1D1E4DC95000ACDFA0 /* Customer.swift in Sources */,
 				2BD608DD1E543EC90010A028 /* JobCell.swift in Sources */,
+				2B6610341E77CF8C0006BCAF /* IntroductionController.swift in Sources */,
+				2B1F86011E8B4797004DB528 /* SelectedJobs.swift in Sources */,
 				2B967C621E739EBE0032BB97 /* StoreManager.swift in Sources */,
 				2BF20A221E4DD24900ACDFA0 /* SettingsController.swift in Sources */,
 				2BF209FA1E4DC79700ACDFA0 /* LoginRegisterController.swift in Sources */,
+				2B4F0CCB1E8E2FFB00359B96 /* EmailPreviewViewController.swift in Sources */,
 				2BF20A2D1E4E866E00ACDFA0 /* Extensions.swift in Sources */,
 				2B967C661E74854A0032BB97 /* PaymentOptionsController.swift in Sources */,
 				2BF20A261E4E568A00ACDFA0 /* InputsContainerView.swift in Sources */,
 				2BD608E21E556ECD0010A028 /* JobRegistrationController.swift in Sources */,
+				2B4F0CA11E8E210600359B96 /* CustomPrintPageRenderer.swift in Sources */,
 				2B4461E21E501C600000BC34 /* BaseCell.swift in Sources */,
+				2B4F0C9F1E8E20A700359B96 /* ReferalComposer.swift in Sources */,
 				2BF20A391E5001F600ACDFA0 /* CustomerController.swift in Sources */,
 				2BF20A201E4DD14300ACDFA0 /* WirkTabBarController.swift in Sources */,
+				2B1F85FF1E88A448004DB528 /* EmailController.swift in Sources */,
 				2BF20A2A1E4E6EC600ACDFA0 /* LoginRegisterController+Handler.swift in Sources */,
+				2BF5D75D1E7B547600B01BCF /* IntroductionPage.swift in Sources */,
 				2B9012771E5B69C0005A01AA /* LocationManager.swift in Sources */,
 				2BF20A371E50013C00ACDFA0 /* CustomerRegistrationController.swift in Sources */,
 				2BF20A2F1E4EE8F100ACDFA0 /* System.swift in Sources */,
+				2B4F0C991E8DA6D600359B96 /* UserPreferences.swift in Sources */,
 				2BD608E41E5573910010A028 /* JobRegistrationController+Handlers.swift in Sources */,
 				2BF20A331E4EF44C00ACDFA0 /* User.swift in Sources */,
 				2BF209F81E4DC79700ACDFA0 /* AppDelegate.swift in Sources */,

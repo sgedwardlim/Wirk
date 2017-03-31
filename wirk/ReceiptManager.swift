@@ -165,7 +165,7 @@ class ReceiptManager: NSObject {
             // Loop through each In-App and check for the values we discussed earlier 
             for inApp in inApps {
                 
-                print(inApp)
+//                print("original_transaciton_identifier: ", receipt["original_transaciton_identifier(OTI)"])
                 print(x)
                 x += 1
                 // Since we will only be interested in subscriptions
@@ -180,12 +180,12 @@ class ReceiptManager: NSObject {
 //                let productID = inApp["product_id"]
 //                let transactionID = inApp["transaction_id"]
                 
-//                let isTrial = inApp["is_trial_period"] as? NSString
+                let isTrial = inApp["is_trial_period"] as? NSString
                 
                 self.checkSubscriptionStatus(date: Date.init(timeIntervalSince1970: expiryDate.doubleValue / 1000))
-                self.saveTrial(isTrial: true)
+//                self.saveTrial(isTrial: true)
                 // uncomment the bottm and delete the top in production
-//                self.saveTrial(isTrial: isTrial!.boolValue)
+                self.saveTrial(isTrial: isTrial!.boolValue)
             }
             
             //Let's post a notification when the receipt is updated so we can update our UI the collectionView to see if user is subscribed

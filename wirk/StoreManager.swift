@@ -185,10 +185,8 @@ extension StoreManager: SKPaymentTransactionObserver {
         
         // Implement code required to unlock content user purchased
         
-        
         // Checks all the avalible subscription products
         if self.autoSubscriptionIds.contains(transaction.payment.productIdentifier) {
-            
             // Now lets check our subscription transactions since we only have one
             if transaction.payment.productIdentifier == "com.sgedwardlim.wirk.monthly" {
                 // User purchased this subscription, tell the ReceiptManager to refresh the receipt 

@@ -17,9 +17,11 @@ final class System {
     static let ref = FIRDatabase.database().reference()
     static let customerRef = FIRDatabase.database().reference().child("customers")
     static let jobRef = FIRDatabase.database().reference().child("jobs")
-    static let uid = FIRAuth.auth()?.currentUser?.uid
-    
-    
+    static var uid: String? {
+        get {
+            return FIRAuth.auth()?.currentUser?.uid
+        }
+    }
     
     // MARK: Customer Related Database Functions
     // Observe any changes to the customers node in FIREBASE and notify the caller
@@ -248,6 +250,10 @@ final class System {
             }
             // Succesfully authenthucated user into database
             self.updateUserToDatabase(withUser: user, name, email)
+            
+            let emailSubject = "Referal From: \(name)"
+            let emailMessage = "Hi thanks for considering us, here are some referals from jobs we have done close to you"
+            UserPreferences.updatePreferencesToUserDefaults(companyName: name, emailSubject: emailSubject, emailMessage: emailMessage)
             completion(error)
         })
     }

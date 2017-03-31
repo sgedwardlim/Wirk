@@ -6,17 +6,17 @@
 //  Copyright © 2017 Edward. All rights reserved.
 //
 
-import UIKit
+//import Foundation
 
 struct IntroductionPage {
     
-    let imageName: String?
-    let image: UIImage?
-    let description: String?
+    let imageName: String
+    let title: String
+    let description: String
 
-    init(imageName: String, description: String?) {
+    init(imageName: String, title: String, description: String) {
         self.imageName = imageName
-        self.image = UIImage(named: imageName)
+        self.title = title
         self.description = description
     }
 }

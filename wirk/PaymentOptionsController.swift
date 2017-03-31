@@ -92,7 +92,7 @@ class PaymentOptionsHeaderCell: UICollectionViewCell {
         return iv
     }()
     
-    let attributedTextTextView: UITextView = {
+    let attributedText: UITextView = {
         // Set up the properties for textview
         let title = "You've setup your account!"
         let message = "Select a plan to send referrals. Start a free trial - or choose a plan today."
@@ -114,8 +114,8 @@ class PaymentOptionsHeaderCell: UICollectionViewCell {
         
         let text = UITextView()
         text.backgroundColor = UIColor(colorType: .background)
-        text.isEditable = false
         text.attributedText = attributedText
+        text.isEditable = false
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -133,7 +133,7 @@ class PaymentOptionsHeaderCell: UICollectionViewCell {
         
         addSubview(containerView)
         containerView.addSubview(checkImage)
-        containerView.addSubview(attributedTextTextView)
+        containerView.addSubview(attributedText)
         
         containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
@@ -145,10 +145,10 @@ class PaymentOptionsHeaderCell: UICollectionViewCell {
         checkImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
         checkImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
-        attributedTextTextView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-        attributedTextTextView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 4/5).isActive = true
-        attributedTextTextView.topAnchor.constraint(equalTo: checkImage.bottomAnchor, constant: 0).isActive = true
-        attributedTextTextView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        attributedText.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        attributedText.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 4/5).isActive = true
+        attributedText.topAnchor.constraint(equalTo: checkImage.bottomAnchor, constant: 0).isActive = true
+        attributedText.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
 }
@@ -159,7 +159,15 @@ class PaymentOptionsCell: UICollectionViewCell {
         didSet {
             
             guard let product = product else { return }
+            // Change the title of the button depending on the states of subscription
+            // TRIAL PERIOD ACTIVE, NOT ACTIVE, SUBSCRIBED, NOT SUBSCRIBED
             productName.text = product.localizedTitle
+            
+            if StoreManager.shared.receiptManager.isTrial {
+                // User on trial period
+                
+            }
+            
             productDescription.text = product.localizedDescription
             
             // Use NumberFormatter for thr price to show correct price currency

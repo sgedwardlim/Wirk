@@ -91,7 +91,7 @@ extension UIViewController {
     
     func handleLogout() {
         System.sharedInstance.logoutUser()
-        let loginRegisterController = LoginRegisterController()
-        present(loginRegisterController, animated: true, completion: nil)
+        let introductionController = IntroductionController()
+        present(introductionController, animated: true, completion: nil)
     }
 }

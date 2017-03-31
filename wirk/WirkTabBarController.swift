@@ -22,7 +22,7 @@ class WirkTabBarController: UITabBarController {
         jobNav.tabBarItem.title = "Jobs"
         jobNav.tabBarItem.image = UIImage(named: "job")
         
-        let emailView = UIViewController()
+        let emailView = EmailController()
         let emailNav = UINavigationController(rootViewController: emailView)
         emailNav.tabBarItem.title = "Email"
         emailNav.tabBarItem.image = UIImage(named: "email")
@@ -36,6 +36,10 @@ class WirkTabBarController: UITabBarController {
         tabBar.unselectedItemTintColor = UIColor(colorType: .background)
         tabBar.tintColor = UIColor(colorType: .button)
         viewControllers = [customersNav, jobNav, emailNav, settingsNav]
+        
+        if System.uid == nil {
+            // logout user
+            perform(#selector(handleLogout), with: nil, afterDelay: 0.01)
+        }
     }
-    
 }

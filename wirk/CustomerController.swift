@@ -56,11 +56,6 @@ class CustomerController: UITableViewController, UISearchBarDelegate, UISearchRe
         navigationItem.rightBarButtonItems = [addCustomerButton, searchButton]
         tableView.register(CustomerCell.self, forCellReuseIdentifier: customerCellId)
         
-        if System.uid == nil {
-            System.sharedInstance.logoutUser()
-            handleLogout()
-        }
-        
         // Add observer so that we get notified whenever the products get loaded
         NotificationCenter.default.addObserver(self, selector: #selector(SKProductsDidLoadFromiTunes), name: NSNotification.Name.init("SKProductsHaveLoaded"), object: nil)
         
