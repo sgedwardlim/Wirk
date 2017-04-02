@@ -12,4 +12,14 @@ import Foundation
 class SelectedJobs {
     static let shared = SelectedJobs()
     var jobs = [Job]()
+    
+    func addCustomersToJobs(completion: @escaping () -> ()) {
+        for job in jobs {
+            // load all the customer values for the selected job
+            System.customerRef.child("\(System.uid!)").child("\(job.customerKey!)").observe(.value, with: { (snapshot) in
+                job.customer = Customer(withSnapshot: snapshot)
+                completion()
+            })
+        }
+    }
 }

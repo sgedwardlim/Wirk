@@ -32,6 +32,9 @@ class Job {
     var afterImageUrl: String?
     var afterImage: UIImage?
     
+    // need customer referece for mails
+    var customer: Customer?
+    
     init(withCustomerKey customerKey: String?) {
         guard let key = customerKey else { return }
         self.customerKey = key

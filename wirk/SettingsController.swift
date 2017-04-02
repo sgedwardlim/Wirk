@@ -107,12 +107,11 @@ class SettingsController: UIViewController {
         emailSectionTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
         emailSectionTitle.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
-        logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        setupEmailFieldContainerView()
+        
+        logoutButton.topAnchor.constraint(equalTo: emailFieldContainer.bottomAnchor).isActive = true
         logoutButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         logoutButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        setupEmailFieldContainerView()
     }
     
     private func setupEmailFieldContainerView() {

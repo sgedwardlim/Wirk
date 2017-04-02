@@ -146,9 +146,12 @@ class EmailController: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        SelectedJobs.shared.addCustomersToJobs {
+            self.createReferalAsHTML()
+        }
+        
         // get the default user email subject and email description
         loadUserEmailPreferences()
-        
         // clear the tabbar badges
         tabBarController?.tabBar.items?[2].badgeValue = nil
         tableView.reloadData()
@@ -260,7 +263,6 @@ class EmailController: UIViewController, UITableViewDataSource, UITableViewDeleg
         self.emailSubjectField.text = UserPreferences.getEmailSubject()
         self.emailMessageField.text = UserPreferences.getEmailMessage()
         self.emailMessageField.textViewDidChange(emailMessageField)
-        createReferalAsHTML()
     }
     
     // MARK: UITextFieldDelegate

@@ -46,19 +46,14 @@ class ReferalComposer: NSObject {
                 jobHTMLContent = try String(contentsOfFile: pathToSingleJobHTMLTemplate!)
                 
                 // load all the customer values for the selected job
-                System.customerRef.child("\(System.uid!)").child("\(job.customerKey!)").observe(.value, with: { (snapshot) in
-                    let customer = Customer(withSnapshot: snapshot)
+                if let customer = job.customer {
                     if customer.privacy == false {
-                        
                         //Only show the customers name and city
-                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "<b><h5>Customer Information</h5></b>", with: "")
-                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "<p>#CUSTOMER_NAME#</p>", with: "")
-                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "<p>#CUSTOMER_LOCATION#</p>", with: "")
-                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "<p>#CUSTOMER_PHONE#</p>", with: "")
-                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "<p>#CUSTOMER_EMAIL#</p>", with: "")
-                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "<b><h6>Job Description</h6></b>", with: "")
-                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "<p>#JOB_TYPE#</p>", with: "")
-                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "<p>#JOB_DESCRIPTION#</p>", with: "")
+                        // sets the style tag to only hide the phone and email fields
+                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "#HIDDEN_VALUE#", with: "display:none;")
+                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "#CUSTOMER_NAME#",
+                                                                             with: "\(customer.first!) \(customer.last!)")
+                        jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "#CUSTOMER_LOCATION#", with: customer.location!)
                         
                     } else {
                         // Show all values of customer
@@ -69,7 +64,7 @@ class ReferalComposer: NSObject {
                         jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "#CUSTOMER_PHONE#", with: customer.phone!)
                         jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "#CUSTOMER_EMAIL#", with: customer.email!)
                     }
-                })
+                }
                 
                 // Replace the description and price placeholders with the actual values.
                 jobHTMLContent = jobHTMLContent.replacingOccurrences(of: "#JOB_TYPE#", with: job.jobType!)
