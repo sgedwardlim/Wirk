@@ -170,6 +170,8 @@ class JobController: UITableViewController, UISearchControllerDelegate, UISearch
             self.jobs!.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+        // Make background color of action green
+        share.backgroundColor = UIColor(netHex: 0x10DDC2)
         
         return [share]
     }
@@ -217,7 +219,7 @@ class JobController: UITableViewController, UISearchControllerDelegate, UISearch
             let job = jobs?[indexPath.row]
             cell.job = job
             cell.jobLocationLabel.text = job?.location
-            cell.distFromLabel.text = "10.0 mi"
+//            cell.distFromLabel.text = "10.0 mi"
 //            LocationManager.getCityAndZip(with: job?.placemark, completion: { (city, zip) in
 //                
 //                cell.jobLocationLabel.text = String(format: "%@, %@", city ?? "", zip ?? "")

@@ -20,12 +20,27 @@ class IntroductionController: UIViewController, UICollectionViewDelegate, UIColl
     
     var introductionPages: [IntroductionPage] = {
         
-        let firstPage = IntroductionPage(imageName: "beforeImage", title: "First Page Title", description: "Introduction descrption for page 1 Introduction descrption for page 1")
-        let secondPage = IntroductionPage(imageName: "beforeImage", title: "Second Page Title", description: "Introduction descrption for page 2")
-
-        let thirdPage = IntroductionPage(imageName: "beforeImage", title: "Third Page Title", description: "Introduction descrption for page 3")
-
-        return [firstPage, secondPage, thirdPage]
+        let page_1 = IntroductionPage(imageName: "page_1",
+                                         title: "Adding Customers",
+                                         description: "Add customers you've worked for over the years and use them as your referrals!")
+        let page_2 = IntroductionPage(imageName: "page_2",
+                                         title: "Adding Jobs",
+                                         description: "Add jobs for every customer!")
+        let page_3 = IntroductionPage(imageName: "page_3",
+                                         title: "Easily Search",
+                                         description: "Easily search through all your jobs")
+        let page_4 = IntroductionPage(imageName: "page_4",
+                                         title: "Email Referrals",
+                                         description: "Easily add jobs to mailing list")
+        let page_5 = IntroductionPage(imageName: "page_5",
+                                         title: "Customize Email Messages",
+                                         description: "Easily customize email messages for your preference")
+        let page_6 = IntroductionPage(imageName: "page_6",
+                                         title: "Preview Emails",
+                                         description: "Preview all the emails before sending")
+        
+        
+        return [page_1, page_2, page_3, page_4, page_5, page_6]
     }()
     
     lazy var skipButton: UIButton = {

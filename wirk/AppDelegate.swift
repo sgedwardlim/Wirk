@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
         
-        // Start the StoreManager class
-        StoreManager.shared.setup()
+        // Start the StoreManager class, no payments options for now, all free
+//        StoreManager.shared.setup()
         
         customizeAppColorTheme()
         

@@ -55,19 +55,24 @@ extension CustomerRegistrationController {
         let email = customerHeaderCell?.emailField.text
         let privacy = customerHeaderCell?.privacySwitchControl.isOn
         
-        // safely unwraping the existing customer
-        if let customer = customer {
-            customer.first = first
-            customer.middle = middle
-            customer.last = last
-            customer.location = location
-            customer.phone = phone
-            customer.email = email
-            // implict unwrap because variable can only be on or off, no nil state
-            customer.privacy = privacy!
-            System.sharedInstance.updateCustomerToDatabase(with: customer)
+        
+        if location != "" {
+            // safely unwraping the existing customer
+            if let customer = customer {
+                customer.first = first
+                customer.middle = middle
+                customer.last = last
+                customer.location = location
+                customer.phone = phone
+                customer.email = email
+                // implict unwrap because variable can only be on or off, no nil state
+                customer.privacy = privacy!
+                System.sharedInstance.updateCustomerToDatabase(with: customer)
+                dismiss(animated: true, completion: nil)
+            }
+        }else {
+            displayAlert("Invalid Location", message: "Location is required for the creation of a customer")
         }
-        dismiss(animated: true, completion: nil)
     }
 }
 

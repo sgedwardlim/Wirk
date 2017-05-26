@@ -245,6 +245,10 @@ class EmailController: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
     
     // MARK: TableView Delegates
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

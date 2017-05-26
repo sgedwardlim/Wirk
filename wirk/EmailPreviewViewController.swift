@@ -24,7 +24,6 @@ class EmailPreviewViewController: UIViewController, MFMailComposeViewControllerD
     
     lazy var composeButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(handleComposeTapped))
-//        button.isEnabled = false
         return button
     }()
     

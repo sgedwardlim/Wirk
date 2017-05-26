@@ -37,7 +37,7 @@ class SettingsController: UIViewController {
         return container
     }()
     
-    let companyNameField: UITextField = {
+    lazy var companyNameField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Company Name"
         textField.backgroundColor = UIColor(colorType: .background)
@@ -52,7 +52,7 @@ class SettingsController: UIViewController {
         return view
     }()
     
-    let emailSubjectField: UITextField = {
+    lazy var emailSubjectField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Email subject"
         textField.backgroundColor = UIColor(colorType: .background)
@@ -76,6 +76,8 @@ class SettingsController: UIViewController {
         return textField
     }()
     
+    var currentSelectedTextField: UITextField?
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadUserPreferences()
@@ -91,6 +93,9 @@ class SettingsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         navigationItem.title = "Settings"
         navigationController?.navigationBar.tintColor = .black
@@ -160,5 +165,37 @@ class SettingsController: UIViewController {
         self.emailMessageField.text = UserPreferences.getEmailMessage()
         self.emailMessageField.textViewDidChange(emailMessageField)
     }
+    
+    func handleDismissKeyboard() {
+        view.endEditing(true)
+    }
 }
+
+extension SettingsController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleDismissKeyboard()
+        return true
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
